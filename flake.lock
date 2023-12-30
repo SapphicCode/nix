@@ -3,7 +3,6 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "homeManager",
           "nixpkgs"
         ]
       },
@@ -20,24 +19,6 @@
         "ref": "master",
         "repo": "home-manager",
         "type": "github"
-      }
-    },
-    "homeManager": {
-      "inputs": {
-        "home-manager": "home-manager",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-Fv54vBUK5qpCtVvoFucOdPlyb56FGRZlPmuwoXxWVIM=",
-        "path": "./home-manager",
-        "type": "path"
-      },
-      "original": {
-        "path": "./home-manager",
-        "type": "path"
       }
     },
     "nixpkgs": {
@@ -58,7 +39,7 @@
     },
     "root": {
       "inputs": {
-        "homeManager": "homeManager",
+        "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }
     }
