@@ -33,6 +33,6 @@
   programs.home-manager.enable = true;
 
   home.activation.chezmoi = lib.hm.dag.entryAfter [ "installPackages" ] ''
-    $DRY_RUN_CMD ${pkgs.chezmoi} init --apply git.sapphicco.de/SapphicCode/dotfiles
+    $DRY_RUN_CMD ${pkgs.chezmoi}/bin/chezmoi init --apply git.sapphicco.de/SapphicCode/dotfiles
   '';
 }
