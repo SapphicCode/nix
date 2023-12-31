@@ -5,6 +5,7 @@ resources:
     icon: git
     source:
       uri: https://git.sapphicco.de/SapphicCode/universe.git
+    public: true
 
 jobs:
   - name: set-pipeline
@@ -17,6 +18,7 @@ jobs:
         file: universe-git/.concourse-ci.yaml
 
   - name: test-home-manager
+    public: true
     plan:
       - get: universe-git
         trigger: true
