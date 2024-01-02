@@ -45,4 +45,13 @@
     # JS
     bun
   ];
+
+  # alias for `node` -> `bun`
+  home.file.".local/bin/node" = {
+    text = ''
+      #!/usr/bin/env bash
+      exec bun "$@"
+    '';
+    executable = true;
+  };
 }
