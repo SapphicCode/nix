@@ -22,6 +22,7 @@
     vscode
 
     fira
+    merriweather
     fira-code
   ];
 }
