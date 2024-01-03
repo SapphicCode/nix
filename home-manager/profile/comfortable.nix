@@ -15,6 +15,7 @@
     ripgrep
 
     # tools
+    gnupg
     fq
     syncthing
     podman

@@ -16,6 +16,10 @@
         pkgs = nixpkgs.legacyPackages."aarch64-darwin";
         modules = [ ./home-manager/host/Maeve.nix ];
       };
+      "sapphiccode@pandora" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        modules = [ ./home-manager/host/pandora.nix ];
+      };
       "deck@hollydeck" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
         modules = [ ./home-manager/host/hollydeck.nix ];

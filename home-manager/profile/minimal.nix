@@ -1,7 +1,7 @@
 { lib, pkgs, ... }: {
   home.packages = with pkgs; [
     # bare minimum
-    git
+    gitFull
     git-lfs
     delta # pager for git
     chezmoi
