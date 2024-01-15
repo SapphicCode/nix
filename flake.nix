@@ -20,9 +20,13 @@
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
         modules = [ ./home-manager/host/pandora.nix ];
       };
+      "sapphiccode@hollydeck" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        modules = [ ./home-manager/host/hollydeck_bazzite.nix ];
+      };
       "deck@hollydeck" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        modules = [ ./home-manager/host/hollydeck.nix ];
+        modules = [ ./home-manager/host/hollydeck_steamos.nix ];
       };
       "generic-server-arm64" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."aarch64-linux";
