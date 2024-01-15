@@ -13,16 +13,15 @@
     ];
   };
   home.packages = with pkgs; [
-    firefox
-
-    wezterm
+    # web
+    chromium
 
     slack
     obsidian
     vscode
 
-    fira
-    merriweather
-    fira-code
+    # other apps
+    wezterm
+    haruna
   ];
 }

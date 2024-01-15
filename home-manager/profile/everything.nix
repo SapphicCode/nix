@@ -16,6 +16,8 @@
     exiftool
     libjxl
     nb
+    watchman
+    python311Packages.pywatchman
 
     # Python
     python311Full

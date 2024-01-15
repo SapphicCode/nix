@@ -14,11 +14,15 @@
     fzf
     ripgrep
 
+    # containers
+    podman
+    docker-client
+    docker-compose
+
     # tools
+    hyfetch
     gnupg
     fq
     syncthing
-    podman
-    watchman
   ];
 }
