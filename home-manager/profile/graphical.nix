@@ -21,7 +21,15 @@
     vscode
 
     # other apps
-    wezterm
     haruna
+
+    # fonts
+    fira
+    ibm-plex
+
+    merriweather
+
+    fira-code
   ];
+  fonts.fontconfig.enable = true;
 }

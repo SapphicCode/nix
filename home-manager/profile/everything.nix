@@ -24,6 +24,7 @@
     python311Packages.black
     python311Packages.isort
     ruff
+    pre-commit
     poetry
     pdm
     python311Packages.ipython
