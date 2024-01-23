@@ -16,12 +16,13 @@
     # web
     chromium
 
-    slack
+    # slack
     obsidian
     vscode
 
     # other apps
     haruna
+    wl-clipboard
 
     # fonts
     fira
@@ -30,6 +31,8 @@
     merriweather
 
     fira-code
+    iosevka
+    iosevka-comfy.comfy
   ];
   fonts.fontconfig.enable = true;
 }
