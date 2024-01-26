@@ -19,10 +19,12 @@
     # slack
     obsidian
     vscode
+    telegram-desktop
 
     # other apps
     haruna
     wl-clipboard
+    yubikey-manager
 
     # fonts
     fira
