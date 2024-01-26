@@ -23,6 +23,6 @@
     hyfetch
     gnupg
     fq
-    syncthing
+    just
   ];
 }
