@@ -21,6 +21,7 @@
 
     # tools
     hyfetch
+    restic
     gnupg
     fq
     just
