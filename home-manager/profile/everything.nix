@@ -50,8 +50,8 @@
   # alias for `node` -> `bun`
   home.file.".local/bin/node" = {
     text = ''
-      #!/usr/bin/env bash
-      exec bun "$@"
+      #!${pkgs.bash}/bin/bash
+      exec ${pkgs.bun}/bin/bun "$@"
     '';
     executable = true;
   };
