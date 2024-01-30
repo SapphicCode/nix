@@ -8,6 +8,7 @@
     xonsh
 
     # all remaining (occasional use) tools
+    _1password
     lima
     charm
     glow
