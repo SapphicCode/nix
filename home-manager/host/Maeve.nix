@@ -6,6 +6,7 @@
   home.packages = with pkgs; [
     coreutils
     gnugrep
+    gnused
   ];
 
   services.syncthing.enable = true;
