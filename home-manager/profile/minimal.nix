@@ -19,6 +19,7 @@
     neovim
 
     # tools
+    lsof
     fd
     age
     zstd

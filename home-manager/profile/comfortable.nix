@@ -6,6 +6,9 @@
   home.packages = with pkgs; [
     nushell # crazy powerful shell
 
+    # shell plugins
+    zoxide
+
     # fancier TUIs
     btop
 
