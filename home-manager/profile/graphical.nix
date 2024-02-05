@@ -13,10 +13,12 @@
     # web
     chromium
 
-    # slack
+    # misc
+    #slack
     obsidian
     vscode
     telegram-desktop
+    strawberry
 
     # other apps
     haruna
