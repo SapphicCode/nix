@@ -24,6 +24,7 @@
     haruna
     wl-clipboard
     yubikey-manager
+    beets
 
     # fonts
     fira

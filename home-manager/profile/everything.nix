@@ -14,7 +14,6 @@
     glow
     skate
     ffmpeg
-    beets
     exiftool
     libjxl
     nb
