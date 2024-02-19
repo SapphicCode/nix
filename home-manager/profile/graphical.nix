@@ -22,6 +22,7 @@
 
     # other apps
     haruna
+    kanata
     wl-clipboard
     yubikey-manager
     beets
