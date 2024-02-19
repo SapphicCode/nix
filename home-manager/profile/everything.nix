@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
     ./comfortable.nix
   ];
@@ -46,14 +46,8 @@
 
     # JS
     bun
+    (writeShellScriptBin "node" ''
+      exec "${pkgs.bun}/bin/bun" "$@"
+    '')
   ];
-
-  # alias for `node` -> `bun`
-  home.file.".local/bin/node" = {
-    text = ''
-      #!${pkgs.bash}/bin/bash
-      exec ${pkgs.bun}/bin/bun "$@"
-    '';
-    executable = true;
-  };
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
     ./minimal.nix
   ];
@@ -28,5 +28,9 @@
     gnupg
     fq
     just
+    ## avoid conflict with go-task
+    (writeShellScriptBin "taskw" ''
+      exec "${pkgs.taskwarrior}/bin/task" "$@"
+    '')
   ];
 }
