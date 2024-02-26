@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -16,13 +16,7 @@
     home-manager,
     ...
   }:
-    flake-utils.lib.eachDefaultSystem (system: let
-      inherit system;
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      formatter = pkgs.alejandra;
-    })
-    // {
+    {
       homeConfigurations = {
         "sapphiccode@Maeve" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."aarch64-darwin";
@@ -44,14 +38,18 @@
           pkgs = nixpkgs.legacyPackages."x86_64-linux";
           modules = [./home-manager/host/hollydeck_steamos.nix];
         };
-        "generic-server-arm64" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."aarch64-linux";
-          modules = [./home-manager/host/generic-server.nix];
-        };
-        "generic-server-amd64" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      };
+    }
+    // flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+      inherit system;
+    in {
+      formatter = pkgs.alejandra;
+      packages.homeConfigurations = {
+        "generic-server" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
           modules = [./home-manager/host/generic-server.nix];
         };
       };
-    };
+    });
 }
