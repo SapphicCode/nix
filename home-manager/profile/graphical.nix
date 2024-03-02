@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
     ./everything.nix
   ];
@@ -11,17 +11,17 @@
   ];
   home.packages = with pkgs; [
     # web
-    chromium
+    #chromium
 
     # misc
     #slack
-    obsidian
-    vscode
-    telegram-desktop
-    strawberry
+    #obsidian
+    #vscode
+    #telegram-desktop
+    #strawberry
 
     # other apps
-    haruna
+    #haruna
     kanata
     wl-clipboard
     yubikey-manager
