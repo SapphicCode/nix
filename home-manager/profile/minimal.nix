@@ -1,4 +1,8 @@
-{ lib, pkgs, ... }: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     # bare minimum
@@ -22,6 +26,7 @@
     lsof
     fd
     age
+    age-plugin-yubikey
     zstd
     jq
     yq-go
@@ -30,13 +35,13 @@
     pwgen
 
     # dev tools
-    nixpkgs-fmt
+    alejandra
   ];
 
   programs.home-manager.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
-  home.activation.chezmoi = lib.hm.dag.entryAfter [ "installPackages" ] ''
+  home.activation.chezmoi = lib.hm.dag.entryAfter ["installPackages"] ''
     $DRY_RUN_CMD ${pkgs.chezmoi}/bin/chezmoi init --apply git.sapphicco.de/SapphicCode/dotfiles
   '';
 }
