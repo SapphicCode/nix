@@ -1,6 +1,5 @@
 # bazzite configuration
-
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.username = "sapphiccode";
   home.homeDirectory = "/var/home/sapphiccode";
   home.stateVersion = "23.05";
