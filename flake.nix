@@ -2,23 +2,26 @@
   description = "Cassandra's everything flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = {
     nixpkgs,
+    nixpkgs-unstable,
     flake-utils,
     home-manager,
     ...
   }:
     {
       homeConfigurations = {
-        "sapphiccode@Maeve" = home-manager.lib.homeManagerConfiguration {
+        "sapphiccode@Maeve" = home-manager.lib.homestableManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."aarch64-darwin";
           modules = [./home-manager/host/Maeve.nix];
         };
@@ -41,14 +44,29 @@
       };
     }
     // flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
       inherit system;
+
+      config = {
+        allowUnfree = true;
+        permittedInsecurePackages = ["electron-25.9.0"]; # obsidian
+      };
+      pkgs = import nixpkgs {inherit system config;};
+      unstable = import nixpkgs-unstable {inherit system config;};
     in {
       formatter = pkgs.alejandra;
+
       packages.homeConfigurations = {
         "generic-server" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [./home-manager/host/generic-server.nix];
+        };
+      };
+
+      packages.nixosConfigurations = {
+        pandora = nixpkgs.lib.nixosSystem {
+          inherit system pkgs;
+          specialArgs = {inherit unstable;};
+          modules = [./nixos/host/pandora];
         };
       };
     });
