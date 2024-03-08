@@ -44,6 +44,11 @@
         };
       };
 
+      templates.local-nixos = {
+        path = ./template/nixos;
+        description = "A local NixOS flake tracking this one.";
+      };
+
       nixosModules.pandora = ./nixos/host/pandora/configuration.nix;
     }
     // flake-utils.lib.eachDefaultSystem (system: let
