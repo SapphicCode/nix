@@ -7,11 +7,6 @@
   unstable,
   ...
 }: {
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -132,7 +127,26 @@
   programs.fish.enable = true;
   programs._1password-gui.enable = true;
   programs._1password-gui.polkitPolicyOwners = ["sapphiccode"];
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    package = pkgs.steam.override {
+      extraEnv = {};
+      extraLibraries = pkgs:
+        with pkgs; [
+          xorg.libXcursor
+          xorg.libXi
+          xorg.libXinerama
+          xorg.libXScrnSaver
+          libpng
+          libpulseaudio
+          libvorbis
+          stdenv.cc.cc.lib
+          libkrb5
+          keyutils
+          gamescope
+        ];
+    };
+  };
   environment.sessionVariables = {
     STEAM_FORCE_DESKTOPUI_SCALING = "1.5";
     NIXOS_OZONE_WL = "1";
@@ -165,6 +179,7 @@
     brightnessctl
     playerctl
     wezterm
+    gamescope
   ];
   programs.dconf.enable = true;
   services.gvfs.enable = true;

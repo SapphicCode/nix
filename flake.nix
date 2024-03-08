@@ -13,6 +13,7 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     nixpkgs-unstable,
     flake-utils,
@@ -42,10 +43,10 @@
           modules = [./home-manager/host/hollydeck_steamos.nix];
         };
       };
+
+      nixosModules.pandora = ./nixos/host/pandora/configuration.nix;
     }
     // flake-utils.lib.eachDefaultSystem (system: let
-      inherit system;
-
       config = {
         allowUnfree = true;
         permittedInsecurePackages = ["electron-25.9.0"]; # obsidian
@@ -66,7 +67,10 @@
         pandora = nixpkgs.lib.nixosSystem {
           inherit system pkgs;
           specialArgs = {inherit unstable;};
-          modules = [./nixos/host/pandora];
+          modules = [
+            self.nixosModules.pandora
+            ./nixos/host/pandora/hardware-configuration.nix
+          ];
         };
       };
     });
