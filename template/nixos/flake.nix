@@ -28,6 +28,7 @@
         inherit system pkgs;
         specialArgs = {inherit unstable;};
         modules = [
+          ./hardware-configuration.nix
           universe.nixosModules.exampleModule
         ];
       };
