@@ -49,7 +49,11 @@
         description = "A local NixOS flake tracking this one.";
       };
 
-      nixosModules.pandora = ./nixos/host/pandora/configuration.nix;
+      nixosModules = {
+        openssh = ./nixos/module/openssh.nix;
+        tailscale = ./nixos/module/tailscale.nix;
+        profile_server = ./nixos/profile/server.nix;
+      };
     }
     // flake-utils.lib.eachDefaultSystem (system: let
       config = {
@@ -73,8 +77,11 @@
           inherit system pkgs;
           specialArgs = {inherit unstable;};
           modules = [
-            self.nixosModules.pandora
+            ./nixos/host/pandora/configuration.nix
             ./nixos/host/pandora/hardware-configuration.nix
+            ./nixos/module/user/sapphiccode.nix
+            ./nixos/module/openssh.nix
+            ./nixos/module/tailscale.nix
           ];
         };
       };

@@ -38,8 +38,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
   networking.networkmanager.unmanaged = ["lo" "tailscale*"];
-  networking.firewall.enable = false;
-  services.tailscale.enable = true;
+  networking.firewall.enable = true;
   services.resolved.enable = true;
 
   # Set your time zone.
@@ -115,18 +114,9 @@
     enable = true;
   };
   security.pam.services.login.fprintAuth = false;
+  security.pam.services.xrdp-sesman.fprintAuth = false;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.sapphiccode = {
-    isNormalUser = true;
-    description = "Cassandra";
-    extraGroups = ["networkmanager" "wheel" "input"];
-    shell = pkgs.fish;
-  };
-
-  programs.fish.enable = true;
   programs._1password-gui.enable = true;
-  programs._1password-gui.polkitPolicyOwners = ["sapphiccode"];
   programs.steam = {
     enable = true;
     package = pkgs.steam.override {
@@ -186,6 +176,9 @@
   services.blueman.enable = true;
 
   services.fwupd.enable = true;
+
+  services.xrdp.enable = true;
+  services.xrdp.defaultWindowManager = "startplasma-x11";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
