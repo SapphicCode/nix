@@ -5,5 +5,5 @@
     ../module/user/sapphiccode.nix
   ];
 
-  services.podman.enable = true;
+  virtualisation.podman.enable = true;
 }
