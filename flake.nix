@@ -7,7 +7,7 @@
 
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -23,23 +23,23 @@
     {
       homeConfigurations = {
         "sapphiccode@Maeve" = home-manager.lib.homestableManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."aarch64-darwin";
+          pkgs = nixpkgs-unstable.legacyPackages."aarch64-darwin";
           modules = [./home-manager/host/Maeve.nix];
         };
         "sapphiccode@Beauvoir" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."aarch64-darwin";
+          pkgs = nixpkgs-unstable.legacyPackages."aarch64-darwin";
           modules = [./home-manager/host/Beauvoir.nix];
         };
         "sapphiccode@pandora" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          pkgs = nixpkgs-unstable.legacyPackages."x86_64-linux";
           modules = [./home-manager/host/pandora.nix];
         };
         "sapphiccode@hollydeck" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          pkgs = nixpkgs-unstable.legacyPackages."x86_64-linux";
           modules = [./home-manager/host/hollydeck_bazzite.nix];
         };
         "deck@hollydeck" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          pkgs = nixpkgs-unstable.legacyPackages."x86_64-linux";
           modules = [./home-manager/host/hollydeck_steamos.nix];
         };
       };
@@ -66,9 +66,19 @@
       formatter = pkgs.alejandra;
 
       packages.homeConfigurations = {
-        "generic-server" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [./home-manager/host/generic-server.nix];
+        "generic_comfy" = home-manager.lib.homeManagerConfiguration {
+          pkgs = unstable;
+          modules = [
+            ./home-manager/host/generic.nix
+            ./home-manager/profile/comfortable.nix
+          ];
+        };
+        "generic_minimal" = home-manager.lib.homeManagerConfiguration {
+          pkgs = unstable;
+          modules = [
+            ./home-manager/host/generic.nix
+            ./home-manager/profile/minimal.nix
+          ];
         };
       };
 
