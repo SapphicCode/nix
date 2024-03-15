@@ -47,4 +47,4 @@ jobs:
 
                 sudo -u sapphiccode bash -ec "sh <(curl -L https://nixos.org/nix/install) --no-daemon"
                 sudo -u sapphiccode bash -ec "mkdir -p ~/.config/nix && echo 'experimental-features = nix-command flakes' > ~/.config/nix/nix.conf"
-                sudo -u sapphiccode bash -lec "nix run home-manager -- switch --flake $(pwd)#generic-server-amd64"
+                sudo -u sapphiccode bash -lec "nix run home-manager -- switch --flake $(pwd)#generic_comfy"

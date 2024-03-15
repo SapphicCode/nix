@@ -11,14 +11,14 @@
     _1password
     lima
     charm
-    glow
+    gum
     skate
     ffmpeg
+    imagemagickBig
     exiftool
     libjxl
     nb
-    watchman
-    python311Packages.pywatchman
+    ollama
 
     # Python
     python311Full

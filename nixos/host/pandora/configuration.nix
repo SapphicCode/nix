@@ -160,6 +160,7 @@
     gnome.nautilus
     shotwell
     nomacs
+    sunvox
 
     # sway
     rofi-wayland
@@ -173,7 +174,7 @@
   ];
   programs.dconf.enable = true;
   services.gvfs.enable = true;
-  services.blueman.enable = true;
+  services.blueman.enable = false;
 
   services.fwupd.enable = true;
 
