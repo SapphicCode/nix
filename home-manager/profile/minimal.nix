@@ -23,6 +23,7 @@
     neovim
 
     # tools
+    pv
     lsof
     fd
     age
