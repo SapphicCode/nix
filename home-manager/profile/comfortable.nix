@@ -21,6 +21,7 @@
     podman
     docker-client
     docker-compose
+    distrobox
 
     # tools
     hyfetch
