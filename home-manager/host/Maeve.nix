@@ -7,6 +7,7 @@
     coreutils
     gnugrep
     gnused
+    lima
   ];
 
   services.syncthing.enable = true;
