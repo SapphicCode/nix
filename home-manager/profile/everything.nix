@@ -62,7 +62,7 @@
 
     # misc. other programming languages
     go
-    glean
+    gleam
 
     # other programming language tooling
     stylua
