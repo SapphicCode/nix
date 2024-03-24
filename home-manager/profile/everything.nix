@@ -39,6 +39,7 @@
     imagemagickBig
     nb
     ollama
+    yt-dlp
 
     # Python
     python311Full
@@ -55,6 +56,7 @@
 
     # cloud utils
     awscli2
+    backblaze-b2
 
     # database development
     mongosh
