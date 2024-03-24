@@ -161,6 +161,8 @@
     shotwell
     nomacs
     sunvox
+    prismlauncher
+    gamescope
 
     # sway
     rofi-wayland
@@ -170,7 +172,6 @@
     brightnessctl
     playerctl
     wezterm
-    gamescope
   ];
   programs.dconf.enable = true;
   services.gvfs.enable = true;
