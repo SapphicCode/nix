@@ -4,6 +4,7 @@
   home.stateVersion = "23.05";
 
   home.packages = with pkgs; [
+    bash
     coreutils
     gnugrep
     gnused

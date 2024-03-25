@@ -22,10 +22,6 @@
   }:
     {
       homeConfigurations = {
-        "sapphiccode@Beauvoir" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs-unstable.legacyPackages."aarch64-darwin";
-          modules = [./home-manager/host/Beauvoir.nix];
-        };
         "sapphiccode@pandora" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs-unstable.legacyPackages."x86_64-linux";
           modules = [./home-manager/host/pandora.nix];
@@ -80,6 +76,10 @@
         "Maeve" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable;
           modules = [./home-manager/host/Maeve.nix];
+        };
+        "Clementine" = home-manager.lib.homeManagerConfiguration {
+          pkgs = unstable;
+          modules = [./home-manager/host/Clementine.nix];
         };
       };
 

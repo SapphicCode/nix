@@ -1,15 +1,18 @@
 {pkgs, ...}: {
-  home.username = "sapphiccode";
-  home.homeDirectory = "/Users/sapphiccode";
+  home.username = "cassandra.beelen";
+  home.homeDirectory = "/Users/cassandra.beelen";
   home.stateVersion = "23.05";
 
   home.packages = with pkgs; [
+    bash
     coreutils
     gnugrep
     gnused
+    lima
   ];
 
   imports = [
     ../profile/everything.nix
+    ../profile/fonts.nix
   ];
 }

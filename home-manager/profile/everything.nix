@@ -56,7 +56,6 @@
 
     # cloud utils
     awscli2
-    backblaze-b2
 
     # database development
     mongosh

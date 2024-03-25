@@ -3,6 +3,10 @@
   home.homeDirectory = "/home/sapphiccode";
   home.stateVersion = "23.05";
 
+  home.packages = with pkgs; [
+    backblaze-b2
+  ];
+
   services.syncthing.enable = true;
 
   systemd.user.services.kanata = {
