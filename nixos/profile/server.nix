@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ../module/aarch64-fixes.nix
     ../module/openssh.nix
     ../module/tailscale.nix
     ../module/user/sapphiccode.nix

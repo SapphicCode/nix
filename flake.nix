@@ -45,6 +45,7 @@
         openssh = ./nixos/module/openssh.nix;
         tailscale = ./nixos/module/tailscale.nix;
         profile_server = ./nixos/profile/server.nix;
+        profile_desktop = ./nixos/profile/desktop.nix;
       };
     }
     // flake-utils.lib.eachDefaultSystem (system: let
@@ -84,7 +85,7 @@
       };
 
       packages.nixosConfigurations = {
-        pandora = nixpkgs.lib.nixosSystem {
+        "pandora" = nixpkgs.lib.nixosSystem {
           inherit system pkgs;
           specialArgs = {inherit unstable;};
           modules = [
@@ -93,6 +94,18 @@
             ./nixos/module/user/sapphiccode.nix
             ./nixos/module/openssh.nix
             ./nixos/module/tailscale.nix
+          ];
+        };
+        "Clementine-PVM" = nixpkgs.lib.nixosSystem {
+          inherit system pkgs;
+          specialArgs = {inherit unstable;};
+          modules = [
+            ./nixos/host/Clementine-PVM/hardware-configuration.nix
+            ./nixos/profile/desktop.nix
+            ./nixos/module/vm-guest.nix
+            ({...}: {
+              networking.hostName = "Clementine-PVM";
+            })
           ];
         };
       };
