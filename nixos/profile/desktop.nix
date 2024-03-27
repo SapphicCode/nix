@@ -38,7 +38,11 @@
     telegram-desktop
 
     obsidian
+
+    libsForQt5.plasma-browser-integration
   ];
+
+  programs.gnupg.agent.enable = true;
 
   programs._1password-gui.enable = true;
   environment.etc."1password/custom_allowed_browsers" = {
