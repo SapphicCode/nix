@@ -89,11 +89,13 @@
           inherit system pkgs;
           specialArgs = {inherit unstable;};
           modules = [
-            ./nixos/host/pandora/configuration.nix
             ./nixos/host/pandora/hardware-configuration.nix
-            ./nixos/module/user/sapphiccode.nix
-            ./nixos/module/openssh.nix
-            ./nixos/module/tailscale.nix
+            ./nixos/profile/desktop.nix
+            ({...}: {
+              networking.hostName = "pandora";
+              networking.hostId = "94ad2a33";
+              boot.kernelParams = ["amdgpu.sg_display=0"];
+            })
           ];
         };
         "Clementine-PVM" = nixpkgs.lib.nixosSystem {

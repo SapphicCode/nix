@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: alejandra
+        name: format Nix code with alejandra
+        language: system
+        types:
+          - nix
+        entry: alejandra
