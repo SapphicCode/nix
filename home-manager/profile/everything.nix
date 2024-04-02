@@ -20,6 +20,11 @@
           done
         '';
       };
+      python311Extra = super.python311Full.withPackages (pypkgs:
+        with pypkgs; [
+          requests
+          pyyaml
+        ]);
     })
   ];
 
@@ -42,7 +47,7 @@
     yt-dlp
 
     # Python
-    python311Full
+    python311Extra
     python311Packages.black
     python311Packages.isort
     python310NoAliases
@@ -64,6 +69,7 @@
     # misc. other programming languages
     go
     gleam
+    zulu11
 
     # other programming language tooling
     stylua
