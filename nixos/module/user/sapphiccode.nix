@@ -2,7 +2,7 @@
   users.users.sapphiccode = {
     isNormalUser = true;
     description = "Cassandra";
-    extraGroups = ["wheel" "networkmanager" "input"];
+    extraGroups = ["wheel" "networkmanager" "input" "lp" "scanner"];
     shell = pkgs.fish;
   };
   programs.fish.enable = true;

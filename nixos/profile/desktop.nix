@@ -1,6 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     ../module/user/sapphiccode.nix
+    ../module/packages.nix
     ../module/tailscale.nix
     ../module/aarch64-fixes.nix
   ];
@@ -46,6 +51,20 @@
   };
   hardware.bluetooth.enable = true;
 
+  # Hardware > Printing
+  services.avahi.enable = true;
+  services.printing.enable = true;
+  services.printing.drivers = with pkgs; [
+    epson-escpr
+    epson-escpr2
+  ];
+
+  # Hardware > Scanning
+  hardware.sane.enable = true;
+  hardware.sane.extraBackends = with pkgs; [
+    epsonscan2
+  ];
+
   # Regional
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_IE.UTF-8";
@@ -82,6 +101,9 @@
     prismlauncher
     sunvox
 
+    # utility:
+    gnome.simple-scan
+
     # sway:
     # rofi-wayland
     # pamixer
@@ -93,6 +115,8 @@
   ];
 
   # Program hooks
+  programs.ccache.enable = true;
+  nix.settings.extra-sandbox-paths = [config.programs.ccache.cacheDir];
   programs.gnupg.agent.enable = true;
   programs.ssh.startAgent = true;
   programs._1password-gui.enable = true;
