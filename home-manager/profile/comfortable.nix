@@ -24,6 +24,7 @@
     docker-compose
 
     # tools
+    fossil
     hyfetch
     restic
     gnupg

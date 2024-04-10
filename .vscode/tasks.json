@@ -1,0 +1,11 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "home-manager switch",
+            "command": "fish",
+            "args": ["-c", "home-manager switch --flake .#(whoami)@(hostname -s)"],
+            "problemMatcher": []
+        },
+    ],
+}
