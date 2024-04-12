@@ -20,10 +20,12 @@
           done
         '';
       };
-      python311Extra = super.python311Full.withPackages (pypkgs:
+      python311Extra = super.python311.withPackages (pypkgs:
         with pypkgs; [
+          click
           requests
           pyyaml
+          ipython
         ]);
     })
   ];
@@ -45,6 +47,7 @@
     nb
     ollama
     yt-dlp
+    jwt-cli
 
     # Python
     python311Extra
@@ -56,7 +59,6 @@
     pre-commit
     poetry
     pdm
-    python311Packages.ipython
     pipx # in case of fire break glass
 
     # cloud utils
