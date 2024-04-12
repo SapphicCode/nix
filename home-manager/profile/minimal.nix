@@ -43,6 +43,7 @@
   programs.direnv.nix-direnv.enable = true;
 
   home.activation.chezmoi = lib.hm.dag.entryAfter ["installPackages"] ''
-    $DRY_RUN_CMD ${pkgs.chezmoi}/bin/chezmoi init --apply git.sapphicco.de/SapphicCode/dotfiles
+    $DRY_RUN_CMD ${pkgs.chezmoi}/bin/chezmoi init git.sapphicco.de/SapphicCode/dotfiles
+    $DRY_RUN_CMD ${pkgs.chezmoi}/bin/chezmoi update -a
   '';
 }
