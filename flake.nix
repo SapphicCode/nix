@@ -59,6 +59,13 @@
       formatter = pkgs.alejandra;
 
       packages.homeConfigurations = {
+        "generic_minimal" = home-manager.lib.homeManagerConfiguration {
+          pkgs = unstable;
+          modules = [
+            ./home-manager/host/generic.nix
+            ./home-manager/profile/minimal.nix
+          ];
+        };
         "generic_comfy" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable;
           modules = [
@@ -66,11 +73,11 @@
             ./home-manager/profile/comfortable.nix
           ];
         };
-        "generic_minimal" = home-manager.lib.homeManagerConfiguration {
+        "generic_everything" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable;
           modules = [
             ./home-manager/host/generic.nix
-            ./home-manager/profile/minimal.nix
+            ./home-manager/profile/everything.nix
           ];
         };
 
