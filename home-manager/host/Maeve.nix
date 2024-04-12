@@ -3,15 +3,6 @@
   home.homeDirectory = "/Users/sapphiccode";
   home.stateVersion = "23.05";
 
-  home.packages = with pkgs; [
-    bash
-    coreutils
-    curl
-    gnugrep
-    gnused
-    lima
-  ];
-
   services.syncthing.enable = true;
 
   launchd.agents.ollama = {
@@ -27,6 +18,7 @@
 
   imports = [
     ../profile/everything.nix
-    ../profile/fonts.nix
+    ../module/fonts.nix
+    ../module/macos.nix
   ];
 }
