@@ -8,6 +8,7 @@
 
     # shell plugins
     zoxide
+    atuin
 
     # fancier TUIs
     btop
