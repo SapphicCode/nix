@@ -31,6 +31,7 @@
       OnStartupSec = "2min";
       OnUnitInactiveSec = "1h";
     };
+    Install.WantedBy = ["timers.target"];
   };
 
   imports = [
