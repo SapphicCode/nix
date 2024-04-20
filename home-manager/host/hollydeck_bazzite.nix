@@ -19,7 +19,6 @@
 
       Type = "simple";
       Nice = "10";
-      IOSchedulingClass = "idle";
 
       EnvironmentFile = "%h/.config/restic/restic.env";
       ExecStart = "${pkgs.restic}/bin/restic backup -x --exclude-caches --exclude-file=%h/.config/restic/excludes.txt %h";
