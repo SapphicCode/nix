@@ -26,6 +26,7 @@
           requests
           pyyaml
           ipython
+          pytz
         ]);
     })
   ];
