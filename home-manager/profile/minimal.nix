@@ -43,7 +43,7 @@
   programs.direnv.nix-direnv.enable = true;
 
   home.activation.chezmoi = lib.hm.dag.entryAfter ["installPackages"] ''
-    PATH="${pkgs.chezmoi}/bin:${pkgs.git}/bin:''${PATH}"
+    PATH="${pkgs.chezmoi}/bin:${pkgs.git}/bin:${pkgs.git-lfs}/bin:''${PATH}"
 
     $DRY_RUN_CMD chezmoi init git.sapphicco.de/SapphicCode/dotfiles
     $DRY_RUN_CMD chezmoi update -a
