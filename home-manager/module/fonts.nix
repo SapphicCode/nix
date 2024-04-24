@@ -5,5 +5,6 @@
     merriweather
 
     fira-code
+    fira-code-nerdfont
   ];
 }

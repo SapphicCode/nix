@@ -6,5 +6,6 @@
     gnugrep
     gnused
     lima
+    qemu # podman machine
   ];
 }
