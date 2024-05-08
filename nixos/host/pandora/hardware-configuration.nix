@@ -12,36 +12,52 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "thunderbolt" "usbhid" "usb_storage" "sd_mod"];
+  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "thunderbolt" "uas" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "pandora/root";
-    fsType = "zfs";
+    device = "/dev/disk/by-uuid/5b85bd7e-ae20-413b-b9a7-ef38f1c12239";
+    fsType = "btrfs";
+    options = ["subvol=root-nixos"];
+  };
+
+  boot.initrd.luks.devices."luks-system".device = "/dev/disk/by-uuid/03badca2-0295-42cc-9562-efe3a58035c2";
+  boot.initrd.luks.devices."luks-swap".device = "/dev/disk/by-uuid/4e33d0d8-8260-4bba-9f1a-3ed157e8ec9c";
+
+  fileSystems."/nix/store" = {
+    device = "/dev/disk/by-uuid/5b85bd7e-ae20-413b-b9a7-ef38f1c12239";
+    fsType = "btrfs";
+    options = ["subvol=nix-store"];
   };
 
   fileSystems."/home" = {
-    device = "pandora/home";
-    fsType = "zfs";
+    device = "/dev/disk/by-uuid/5b85bd7e-ae20-413b-b9a7-ef38f1c12239";
+    fsType = "btrfs";
+    options = ["subvol=home"];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/0D76-8183";
-    fsType = "vfat";
+    device = "/dev/disk/by-uuid/66c3d001-1a4d-4dfe-8166-e36acbd2d6e5";
+    fsType = "ext4";
   };
 
-  swapDevices = [];
+  fileSystems."/boot/efi" = {
+    device = "/dev/disk/by-uuid/C7EE-12C2";
+    fsType = "vfat";
+    options = ["fmask=0022" "dmask=0022"];
+  };
+
+  swapDevices = [
+    {device = "/dev/disk/by-uuid/10eb3b9c-f650-4988-b30d-088bf5a7f77f";}
+  ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp195s0f4u1u2.useDHCP = lib.mkDefault true;
-  # networking.interfaces.eth1.useDHCP = lib.mkDefault true;
-  # networking.interfaces.tailscale0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
