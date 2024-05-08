@@ -39,14 +39,9 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/66c3d001-1a4d-4dfe-8166-e36acbd2d6e5";
-    fsType = "ext4";
-  };
-
-  fileSystems."/boot/efi" = {
-    device = "/dev/disk/by-uuid/C7EE-12C2";
+    device = "/dev/disk/by-partlabel/pandora-EFI";
     fsType = "vfat";
-    options = ["fmask=0022" "dmask=0022"];
+    options = [];
   };
 
   swapDevices = [
