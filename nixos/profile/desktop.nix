@@ -103,6 +103,7 @@
 
     # utility:
     gnome.simple-scan
+    krename
 
     # sway:
     # rofi-wayland
@@ -112,6 +113,10 @@
     # brightnessctl
     # playerctl
     # wezterm
+
+    # fonts:
+    fira-code
+    fira-code-nerdfont
   ];
 
   # Program hooks
