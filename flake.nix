@@ -98,6 +98,7 @@
           modules = [
             ./nixos/host/pandora/hardware-configuration.nix
             ./nixos/profile/desktop.nix
+            ./nixos/module/framework-13.nix
             ({...}: {
               networking.hostName = "pandora";
               networking.hostId = "94ad2a33";
