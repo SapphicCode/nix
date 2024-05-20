@@ -31,6 +31,7 @@
     gnupg
     fq
     just
+    halp
     ## avoid conflict with go-task
     (writeShellScriptBin "taskw" ''
       exec "${pkgs.taskwarrior}/bin/task" "$@"
