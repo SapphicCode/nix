@@ -33,9 +33,6 @@
     just
     halp
     gum
-    ## avoid conflict with go-task
-    (writeShellScriptBin "taskw" ''
-      exec "${pkgs.taskwarrior}/bin/task" "$@"
-    '')
+    taskwarrior
   ];
 }
