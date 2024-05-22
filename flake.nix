@@ -130,7 +130,6 @@
             ({...}: {
               networking.hostName = "pandora";
               networking.hostId = "94ad2a33";
-              boot.kernelParams = ["amdgpu.sg_display=0"];
             })
           ];
         };
