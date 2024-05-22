@@ -84,7 +84,7 @@
     in {
       formatter = pkgs.alejandra;
 
-      packages.homeConfigurations = {
+      legacyPackages.homeConfigurations = {
         "generic_minimal" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable;
           modules = [
@@ -117,7 +117,7 @@
         };
       };
 
-      packages.nixosConfigurations = {
+      legacyPackages.nixosConfigurations = {
         "pandora" = nixpkgs.lib.nixosSystem {
           inherit system pkgs;
           specialArgs = {inherit unstable;};
@@ -148,5 +148,7 @@
           ];
         };
       };
+
+      packages.thorium-browser = pkgs.callPackage ./packages/thorium-browser.nix {};
     });
 }
