@@ -38,7 +38,6 @@
     # all remaining (occasional use) tools
     _1password
     charm
-    gum
     skate
     ffmpeg
     imagemagickBig
