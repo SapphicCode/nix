@@ -62,13 +62,24 @@
           nix.settings.trusted-public-keys = ["cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="];
         };
       };
+
+      overlays = {
+        thorium-browser = final: prev: {
+          thorium-browser = final.callPackage ./packages/thorium-browser.nix {};
+        };
+      };
     }
     // flake-utils.lib.eachDefaultSystem (system: let
       config = {
         allowUnfree = true;
         permittedInsecurePackages = ["electron-25.9.0"]; # obsidian
       };
-      pkgs = import nixpkgs {inherit system config;};
+      pkgs = import nixpkgs {
+        inherit system config;
+        overlays = [
+          self.overlays.thorium-browser
+        ];
+      };
       unstable = import nixpkgs-unstable {inherit system config;};
     in {
       formatter = pkgs.alejandra;
