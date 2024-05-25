@@ -17,7 +17,7 @@
     efm-langserver
     fzf
     ripgrep
-    ccacheWrapper
+    gcc
 
     # containers
     podman
