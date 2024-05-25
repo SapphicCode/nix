@@ -85,13 +85,16 @@
     firefox
     vivaldi
     chromium
+    thorium-browser
 
     # chat:
     telegram-desktop
+    signal-desktop
 
     # writing:
     obsidian
     vscode
+    libreoffice-fresh
 
     # media:
     strawberry
@@ -104,6 +107,8 @@
     # utility:
     gnome.simple-scan
     krename
+    easyeffects
+    mkvtoolnix
 
     # sway:
     # rofi-wayland
