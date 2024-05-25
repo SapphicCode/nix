@@ -69,6 +69,13 @@
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_IE.UTF-8";
 
+  # Security
+  security.pam.services.sudo.nodelay = true;
+  security.pam.services.sudo.failDelay = {
+    enable = true;
+    delay = 300000;
+  };
+
   # Graphical
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
