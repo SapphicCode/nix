@@ -45,7 +45,7 @@
     libjxl
     imagemagickBig
     nb
-    ollama
+    #ollama
     yt-dlp
     jwt-cli
 
@@ -56,7 +56,7 @@
     python310NoAliases
     ruff
     pyright
-    pre-commit
+    #pre-commit
     poetry
     pdm
     pipx # in case of fire break glass

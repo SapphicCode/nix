@@ -18,20 +18,20 @@
     Install.WantedBy = ["default.target"];
   };
 
-  nixpkgs.overlays = [
-    (self: super: {
-      ollama-rocm = super.ollama.override {
-        acceleration = "rocm";
-        stdenv = super.ccacheStdenv;
-      };
-    })
-  ];
-  systemd.user.services.ollama = {
-    Unit.Description = "AI bullshit";
-    Service.ExecStart = "${pkgs.ollama-rocm}/bin/ollama serve";
-    Service.Environment = ["HSA_OVERRIDE_GFX_VERSION=11.0.2"];
-    Install.WantedBy = ["default.target"];
-  };
+  # nixpkgs.overlays = [
+  #   (self: super: {
+  #     ollama-rocm = super.ollama.override {
+  #       acceleration = "rocm";
+  #       stdenv = super.ccacheStdenv;
+  #     };
+  #   })
+  # ];
+  # systemd.user.services.ollama = {
+  #   Unit.Description = "AI bullshit";
+  #   Service.ExecStart = "${pkgs.ollama-rocm}/bin/ollama serve";
+  #   Service.Environment = ["HSA_OVERRIDE_GFX_VERSION=11.0.2"];
+  #   Install.WantedBy = ["default.target"];
+  # };
 
   imports = [
     ../profile/graphical.nix

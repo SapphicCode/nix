@@ -3,7 +3,7 @@
     ./desktop.nix
   ];
 
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
     # web:
     thorium-browser
 

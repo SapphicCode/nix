@@ -34,5 +34,6 @@
     halp
     gum
     taskwarrior
+    numbat
   ];
 }
