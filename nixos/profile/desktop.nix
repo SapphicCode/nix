@@ -143,7 +143,16 @@
   services.mullvad-vpn.enable = true;
   programs.dconf.enable = true;
   services.gvfs.enable = true;
-  programs.nix-ld.enable = true;
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+    ];
+  };
+  environment.sessionVariables.LD_LIBRARY_PATH = [
+    "/run/current-system/sw/share/nix-ld/lib"
+  ];
 
   # Background maintenance tasks
   services.zfs.trim.enable = true;
