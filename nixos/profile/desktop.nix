@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   config,
   ...
 }: {
@@ -7,9 +8,7 @@
     ../module/user/sapphiccode.nix
     ../module/packages.nix
     ../module/tailscale.nix
-    ../module/aarch64-fixes.nix
   ];
-
   # Hardware > Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -61,9 +60,6 @@
 
   # Hardware > Scanning
   hardware.sane.enable = true;
-  hardware.sane.extraBackends = with pkgs; [
-    epsonscan2
-  ];
 
   # Regional
   time.timeZone = "Europe/Berlin";
@@ -78,13 +74,13 @@
 
   # Graphical
   services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
+  services.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
   # programs.sway = {
   #   enable = true;
   #   package = unstable.swayfx.override {withBaseWrapper = true;};
   # };
-  services.xserver.displayManager.defaultSession = "plasmawayland";
+  services.displayManager.defaultSession = "plasmawayland";
 
   # Extra packages
   environment.systemPackages = with pkgs; [
@@ -92,7 +88,6 @@
     firefox
     vivaldi
     chromium
-    thorium-browser
 
     # chat:
     telegram-desktop
@@ -109,7 +104,6 @@
 
     # fun:
     prismlauncher
-    sunvox
 
     # utility:
     gnome.simple-scan
@@ -144,27 +138,8 @@
     mode = "0644";
   };
   programs.kdeconnect.enable = true;
-  programs.steam = {
-    enable = true;
-    # package = pkgs.steam.override {
-    #   extraEnv = {};
-    #   extraLibraries = pkgs:
-    #     with pkgs; [
-    #       xorg.libXcursor
-    #       xorg.libXi
-    #       xorg.libXinerama
-    #       xorg.libXScrnSaver
-    #       libpng
-    #       libpulseaudio
-    #       libvorbis
-    #       stdenv.cc.cc.lib
-    #       libkrb5
-    #       keyutils
-    #       gamescope
-    #     ];
-    # };
-  };
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  #environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  services.mullvad-vpn.enable = true;
   programs.dconf.enable = true;
   services.gvfs.enable = true;
   programs.nix-ld.enable = true;

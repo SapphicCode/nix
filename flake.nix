@@ -2,7 +2,7 @@
   description = "Cassandra's everything flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/1d44c066531fa096c5e0ad0f500f346e4ca8a1c8";
 
     lix = {
@@ -125,7 +125,7 @@
             self.nixosModules.lix-cache
             lix-module.nixosModules.default
             ./nixos/host/pandora/hardware-configuration.nix
-            ./nixos/profile/desktop.nix
+            ./nixos/profile/desktop_${system}.nix
             ./nixos/module/framework-13.nix
             ({...}: {
               networking.hostName = "pandora";
@@ -140,7 +140,7 @@
             self.nixosModules.lix-cache
             lix-module.nixosModules.default
             ./nixos/host/Clementine-PVM/hardware-configuration.nix
-            ./nixos/profile/desktop.nix
+            ./nixos/profile/desktop_${system}.nix
             ./nixos/module/vm-guest.nix
             ({...}: {
               networking.hostName = "Clementine-PVM";
