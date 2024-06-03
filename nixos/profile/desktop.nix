@@ -110,6 +110,7 @@
     krename
     easyeffects
     mkvtoolnix
+    wezterm
 
     # sway:
     # rofi-wayland
