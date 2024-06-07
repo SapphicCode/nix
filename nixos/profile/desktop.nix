@@ -131,6 +131,7 @@
   nix.settings.extra-sandbox-paths = [config.programs.ccache.cacheDir];
   programs.gnupg.agent.enable = true;
   programs.ssh.startAgent = true;
+  programs._1password.enable = true;
   programs._1password-gui.enable = true;
   environment.etc."1password/custom_allowed_browsers" = {
     text = ''

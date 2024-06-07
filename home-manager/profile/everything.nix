@@ -36,7 +36,6 @@
     xonsh
 
     # all remaining (occasional use) tools
-    _1password
     charm
     skate
     ffmpeg
