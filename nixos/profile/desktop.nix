@@ -69,7 +69,7 @@
   security.pam.services.sudo.nodelay = true;
   security.pam.services.sudo.failDelay = {
     enable = true;
-    delay = 300000;
+    delay = 200000;
   };
 
   # Graphical
