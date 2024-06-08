@@ -144,6 +144,7 @@
   services.mullvad-vpn.enable = true;
   programs.dconf.enable = true;
   services.gvfs.enable = true;
+  virtualisation.podman.enable = true;
 
   programs.nix-ld = {
     enable = true;
