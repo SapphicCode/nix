@@ -72,13 +72,6 @@
     delay = 200000;
   };
 
-  # Graphical
-  services.xserver.enable = true;
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
-  services.desktopManager.plasma6.enable = true;
   # programs.sway = {
   #   enable = true;
   #   package = unstable.swayfx.override {withBaseWrapper = true;};

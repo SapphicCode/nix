@@ -1,10 +1,10 @@
 {pkgs, ...}: {
-  users.users.sapphiccode = {
+  users.users.aurelia = {
     isNormalUser = true;
-    description = "Cassandra";
+    description = "Aurelia";
     extraGroups = ["wheel" "networkmanager" "input" "lp" "scanner" "dialout"];
     shell = pkgs.bash;
   };
   programs.fish.enable = true;
-  programs._1password-gui.polkitPolicyOwners = ["sapphiccode"];
+  programs._1password-gui.polkitPolicyOwners = ["aurelia"];
 }

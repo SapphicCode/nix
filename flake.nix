@@ -126,10 +126,27 @@
             lix-module.nixosModules.default
             ./nixos/host/pandora/hardware-configuration.nix
             ./nixos/profile/desktop_${system}.nix
+            ./nixos/module/plasma6.nix
             ./nixos/module/framework-13.nix
             ({...}: {
               networking.hostName = "pandora";
               networking.hostId = "94ad2a33";
+            })
+          ];
+        };
+        "cyberdemon" = nixpkgs.lib.nixosSystem {
+          inherit system pkgs;
+          specialArgs = {inherit unstable;};
+          modules = [
+            self.nixosModules.lix-cache
+            lix-module.nixosModules.default
+            ./nixos/host/cyberdemon/hardware-configuration.nix
+            ./nixos/profile/desktop_${system}.nix
+            ./nixos/module/gnome.nix
+            ./nixos/module/user/aurelia.nix
+            (_: {
+              networking.hostName = "cyberdemon";
+              networking.hostId = "93515df2";
             })
           ];
         };
@@ -141,6 +158,7 @@
             lix-module.nixosModules.default
             ./nixos/host/Clementine-PVM/hardware-configuration.nix
             ./nixos/profile/desktop_${system}.nix
+            ./nixos/module/plasma6.nix
             ./nixos/module/vm-guest.nix
             ({...}: {
               networking.hostName = "Clementine-PVM";
