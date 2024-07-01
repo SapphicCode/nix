@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/1d44c066531fa096c5e0ad0f500f346e4ca8a1c8";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/761efd2a2e484adc7890b34791e44a822fd09bf3";
 
     lix = {
       url = "git+https://git@git.lix.systems/lix-project/lix?ref=refs/tags/2.90-beta.1";
@@ -57,7 +57,7 @@
         tailscale = ./nixos/module/tailscale.nix;
         profile_server = ./nixos/profile/server.nix;
         profile_desktop = ./nixos/profile/desktop.nix;
-        lix-cache = {...}: {
+        lix-cache = _: {
           nix.settings.extra-substituters = ["https://cache.lix.systems"];
           nix.settings.trusted-public-keys = ["cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="];
         };
@@ -128,7 +128,7 @@
             ./nixos/profile/desktop_${system}.nix
             ./nixos/module/plasma6.nix
             ./nixos/module/framework-13.nix
-            ({...}: {
+            (_: {
               networking.hostName = "pandora";
               networking.hostId = "94ad2a33";
             })
@@ -160,7 +160,7 @@
             ./nixos/profile/desktop_${system}.nix
             ./nixos/module/plasma6.nix
             ./nixos/module/vm-guest.nix
-            ({...}: {
+            (_: {
               networking.hostName = "Clementine-PVM";
             })
           ];
