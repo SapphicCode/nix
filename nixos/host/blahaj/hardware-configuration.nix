@@ -17,7 +17,7 @@
   boot.kernelModules = [];
   boot.extraModulePackages = [];
 
-  boot.initrd.luks.devices."luks-system".devices = "/dev/disk/by-uuid/313b3f90-e282-4055-8766-4d4e65f98a2d";
+  boot.initrd.luks.devices."luks-system".device = "/dev/disk/by-uuid/313b3f90-e282-4055-8766-4d4e65f98a2d";
 
   fileSystems."/" = {
     device = "blahaj/root";
