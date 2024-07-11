@@ -160,6 +160,7 @@
           specialArgs = {inherit unstable;};
           modules = [
             ./nixos/host/blahaj/hardware-configuration.nix
+            ./nixos/module/boot/systemd-boot.nix
             ./nixos/profile/server_${system}.nix
             ({...}: {
               networking.hostName = "blahaj";
