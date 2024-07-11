@@ -5,13 +5,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/761efd2a2e484adc7890b34791e44a822fd09bf3";
 
-    lix = {
-      url = "git+https://git@git.lix.systems/lix-project/lix?ref=refs/tags/2.90-beta.1";
-      flake = false;
-    };
     lix-module = {
-      url = "git+https://git.lix.systems/lix-project/nixos-module";
-      inputs.lix.follows = "lix";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0-rc1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -57,7 +52,7 @@
         tailscale = ./nixos/module/tailscale.nix;
         profile_server = ./nixos/profile/server.nix;
         profile_desktop = ./nixos/profile/desktop.nix;
-        lix-cache = _: {
+        lix-cache = {...}: {
           nix.settings.extra-substituters = ["https://cache.lix.systems"];
           nix.settings.trusted-public-keys = ["cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="];
         };
@@ -125,12 +120,13 @@
             self.nixosModules.lix-cache
             lix-module.nixosModules.default
             ./nixos/host/pandora/hardware-configuration.nix
-            ./nixos/profile/desktop_${system}.nix
-            ./nixos/module/plasma6.nix
+            ./nixos/profile/desktop.nix
+            ./nixos/module/gnome.nix
             ./nixos/module/framework-13.nix
-            (_: {
+            ({config, ...}: {
               networking.hostName = "pandora";
               networking.hostId = "94ad2a33";
+              boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
             })
           ];
         };
@@ -160,8 +156,23 @@
             ./nixos/profile/desktop_${system}.nix
             ./nixos/module/plasma6.nix
             ./nixos/module/vm-guest.nix
-            (_: {
+            ({...}: {
               networking.hostName = "Clementine-PVM";
+            })
+          ];
+        };
+        "blahaj" = nixpkgs.lib.nixosSystem {
+          inherit system pkgs;
+          specialArgs = {inherit unstable;};
+          modules = [
+            self.nixosModules.lix-cache
+            lix-module.nixosModules.default
+            ./nixos/host/blahaj/hardware-configuration.nix
+            ./nixos/profile/server_${system}.nix
+            ({...}: {
+              networking.hostName = "blahaj";
+              networking.hostId = "ef32a18b";
+              services.qemuGuest.enable = true;
             })
           ];
         };
