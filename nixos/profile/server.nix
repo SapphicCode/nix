@@ -35,9 +35,11 @@
   # Software > Everyday
   nix.package = unstable.lix;
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  enviroment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [];
   programs.gnupg.agent.enable = true;
 
   # Software > Server stuff
   virtualisation.podman.enable = true;
+
+  system.stateVersion = "24.05";
 }
