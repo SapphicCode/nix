@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/761efd2a2e484adc7890b34791e44a822fd09bf3";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/67ab30a1aac28c793dc119a74ceab95643a330f8";
 
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0-rc1.tar.gz";
