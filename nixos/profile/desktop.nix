@@ -1,5 +1,6 @@
 {
   pkgs,
+  unstable,
   lib,
   config,
   ...
@@ -123,6 +124,7 @@
   ];
 
   # Program hooks
+  nix.package = unstable.lix;
   nix.settings.experimental-features = ["nix-command" "flakes"];
   programs.ccache.enable = true;
   nix.settings.extra-sandbox-paths = [config.programs.ccache.cacheDir];

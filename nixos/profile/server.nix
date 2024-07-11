@@ -1,4 +1,8 @@
-{...}: {
+{
+  pkgs,
+  unstable,
+  ...
+}: {
   imports = [
     ../module/openssh.nix
     ../module/tailscale.nix
@@ -29,6 +33,7 @@
   };
 
   # Software > Everyday
+  nix.package = unstable.lix;
   nix.settings.experimental-features = ["nix-command" "flakes"];
   enviroment.systemPackages = with pkgs; [];
   programs.gnupg.agent.enable = true;

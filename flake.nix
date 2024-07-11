@@ -117,8 +117,6 @@
           inherit system pkgs;
           specialArgs = {inherit unstable;};
           modules = [
-            self.nixosModules.lix-cache
-            lix-module.nixosModules.default
             ./nixos/host/pandora/hardware-configuration.nix
             ./nixos/profile/desktop.nix
             ./nixos/module/gnome.nix
@@ -134,8 +132,6 @@
           inherit system pkgs;
           specialArgs = {inherit unstable;};
           modules = [
-            self.nixosModules.lix-cache
-            lix-module.nixosModules.default
             ./nixos/host/cyberdemon/hardware-configuration.nix
             ./nixos/profile/desktop_${system}.nix
             ./nixos/module/gnome.nix
@@ -150,8 +146,6 @@
           inherit system pkgs;
           specialArgs = {inherit unstable;};
           modules = [
-            self.nixosModules.lix-cache
-            lix-module.nixosModules.default
             ./nixos/host/Clementine-PVM/hardware-configuration.nix
             ./nixos/profile/desktop_${system}.nix
             ./nixos/module/plasma6.nix
@@ -165,8 +159,6 @@
           inherit system pkgs;
           specialArgs = {inherit unstable;};
           modules = [
-            self.nixosModules.lix-cache
-            lix-module.nixosModules.default
             ./nixos/host/blahaj/hardware-configuration.nix
             ./nixos/profile/server_${system}.nix
             ({...}: {
