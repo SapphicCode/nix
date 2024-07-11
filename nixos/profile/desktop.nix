@@ -123,6 +123,7 @@
   ];
 
   # Program hooks
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   programs.ccache.enable = true;
   nix.settings.extra-sandbox-paths = [config.programs.ccache.cacheDir];
   programs.gnupg.agent.enable = true;

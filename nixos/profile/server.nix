@@ -29,6 +29,7 @@
   };
 
   # Software > Everyday
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   enviroment.systemPackages = with pkgs; [];
   programs.gnupg.agent.enable = true;
 
