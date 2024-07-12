@@ -1,4 +1,4 @@
 {...}: {
   services.tailscale.enable = true;
-  networking.firewall.trustedInterfaces = ["tailscale*"];
+  networking.firewall.trustedInterfaces = ["tailscale+"];
 }
