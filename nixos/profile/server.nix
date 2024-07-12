@@ -40,6 +40,8 @@
 
   # Software > Server stuff
   virtualisation.podman.enable = true;
+  virtualisation.podman.dockerSocket.enable = true;
+  networking.firewall.trustedInterfaces = ["podman*"];
 
   system.stateVersion = "24.05";
 }
