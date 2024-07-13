@@ -162,10 +162,14 @@
             ./nixos/host/blahaj/hardware-configuration.nix
             ./nixos/module/boot/systemd-boot.nix
             ./nixos/profile/server_${system}.nix
+            ./nixos/module/user/hex.nix
             ({...}: {
               networking.hostName = "blahaj";
               networking.hostId = "ef32a18b";
               services.qemuGuest.enable = true;
+
+              users.users.sapphiccode.linger = true;
+              users.users.hex.linger = true;
             })
           ];
         };
