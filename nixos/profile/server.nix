@@ -7,6 +7,7 @@
     ../module/openssh.nix
     ../module/tailscale.nix
     ../module/user/sapphiccode.nix
+    ../module/podman-user-quadlet.nix
   ];
 
   # Hardware > Memory

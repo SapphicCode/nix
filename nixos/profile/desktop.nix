@@ -9,6 +9,7 @@
     ../module/user/sapphiccode.nix
     ../module/packages.nix
     ../module/tailscale.nix
+    ../module/podman-user-quadlet.nix
   ];
   # Hardware > Boot
   boot.loader.systemd-boot.enable = true;
