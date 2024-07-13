@@ -170,6 +170,13 @@
 
               users.users.sapphiccode.linger = true;
               users.users.hex.linger = true;
+
+              networking.firewall.allowedTCPPortRanges = [
+                {
+                  from = 15080;
+                  to = 15100;
+                }
+              ];
             })
           ];
         };
