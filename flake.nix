@@ -118,7 +118,7 @@
           specialArgs = {inherit unstable;};
           modules = [
             ./nixos/host/pandora/hardware-configuration.nix
-            ./nixos/profile/desktop.nix
+            ./nixos/profile/desktop_${system}.nix
             ./nixos/module/gnome.nix
             ./nixos/module/framework-13.nix
             ({config, ...}: {
