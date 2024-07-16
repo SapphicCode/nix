@@ -140,7 +140,6 @@
     mode = "0644";
   };
   programs.kdeconnect.enable = true;
-  #environment.sessionVariables.NIXOS_OZONE_WL = "1";
   services.mullvad-vpn.enable = true;
   programs.dconf.enable = true;
   services.gvfs.enable = true;
