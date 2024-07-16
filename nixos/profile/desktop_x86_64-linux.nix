@@ -5,7 +5,7 @@
 
   environment.systemPackages = with pkgs; [
     # web:
-    thorium-browser
+    #thorium-browser
 
     # fun:
     sunvox
