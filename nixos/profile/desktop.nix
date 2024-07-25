@@ -31,8 +31,8 @@
   services.resolved.enable = true;
 
   # Hardware > Fingerprints
-  services.fprintd.enable = false;
-  security.pam.services.login.fprintAuth = false;
+  services.fprintd.enable = true;
+  #security.pam.services.login.fprintAuth = false;
   security.pam.services.xrdp-sesman.fprintAuth = false;
 
   # Hardware > Miscellaneous
