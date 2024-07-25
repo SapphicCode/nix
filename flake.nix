@@ -163,6 +163,7 @@
             ./nixos/module/boot/systemd-boot.nix
             ./nixos/profile/server_${system}.nix
             ./nixos/module/user/hex.nix
+            ./nixos/module/user/chaos.nix
             ({...}: {
               networking.hostName = "blahaj";
               networking.hostId = "ef32a18b";
