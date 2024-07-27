@@ -5,6 +5,11 @@ hostname := `hostname -s`
 _default:
     just --list
 
+pre-commit: fmt
+
+fmt:
+    nix run nixpkgs#alejandra -- .
+
 update:
     #!/usr/bin/env nu
     cd "{{universe}}"
