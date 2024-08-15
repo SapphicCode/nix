@@ -35,5 +35,6 @@
     gum
     taskwarrior
     numbat
+    devbox
   ];
 }
