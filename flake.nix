@@ -96,10 +96,6 @@
           pkgs = unstable;
           modules = [./home-manager/host/Maeve.nix];
         };
-        "Clementine" = home-manager.lib.homeManagerConfiguration {
-          pkgs = unstable;
-          modules = [./home-manager/host/Clementine.nix];
-        };
       };
 
       legacyPackages.nixosConfigurations = {
@@ -115,33 +111,6 @@
               networking.hostName = "pandora";
               networking.hostId = "94ad2a33";
               boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-            })
-          ];
-        };
-        "cyberdemon" = nixpkgs.lib.nixosSystem {
-          inherit system pkgs;
-          specialArgs = {inherit unstable;};
-          modules = [
-            ./nixos/host/cyberdemon/hardware-configuration.nix
-            ./nixos/profile/desktop_${system}.nix
-            ./nixos/module/gnome.nix
-            ./nixos/module/user/aurelia.nix
-            (_: {
-              networking.hostName = "cyberdemon";
-              networking.hostId = "93515df2";
-            })
-          ];
-        };
-        "Clementine-PVM" = nixpkgs.lib.nixosSystem {
-          inherit system pkgs;
-          specialArgs = {inherit unstable;};
-          modules = [
-            ./nixos/host/Clementine-PVM/hardware-configuration.nix
-            ./nixos/profile/desktop_${system}.nix
-            ./nixos/module/plasma6.nix
-            ./nixos/module/vm-guest.nix
-            ({...}: {
-              networking.hostName = "Clementine-PVM";
             })
           ];
         };
