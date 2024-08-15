@@ -47,6 +47,7 @@
     #ollama
     yt-dlp
     jwt-cli
+    fossil
 
     # Python
     python311Extra
