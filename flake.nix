@@ -5,11 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/67ab30a1aac28c793dc119a74ceab95643a330f8";
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0-rc1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -23,7 +18,6 @@
     nixpkgs-unstable,
     flake-utils,
     home-manager,
-    lix-module,
     ...
   }:
     {
@@ -52,10 +46,6 @@
         tailscale = ./nixos/module/tailscale.nix;
         profile_server = ./nixos/profile/server.nix;
         profile_desktop = ./nixos/profile/desktop.nix;
-        lix-cache = {...}: {
-          nix.settings.extra-substituters = ["https://cache.lix.systems"];
-          nix.settings.trusted-public-keys = ["cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="];
-        };
       };
 
       overlays = {
