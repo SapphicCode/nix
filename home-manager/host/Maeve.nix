@@ -15,6 +15,9 @@
       };
     };
   };
+  home.packages = with pkgs; [
+    ollama
+  ];
 
   imports = [
     ../profile/everything.nix
