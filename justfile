@@ -1,18 +1,18 @@
-home := `echo $HOME`
-universe := home / "dev" / "1p" / "universe"
 hostname := `hostname -s`
 
 _default:
     just --list
+
+_pull:
+    git pull
 
 pre-commit: fmt
 
 fmt:
     nix run nixpkgs#alejandra -- .
 
-update:
+update: _pull
     #!/usr/bin/env nu
-    cd "{{universe}}"
 
     # bump nixpkgs-unstable
     let offset = (date now) - 3day
@@ -28,7 +28,9 @@ update:
     # commit our update
     git commit -m "flake: update inputs"
 
-rebuild:
+rebuild-hm: _pull
     chezmoi update -a
-    git -C '{{universe}}' pull
-    home-manager switch --flake '{{universe}}#{{hostname}}'
+    home-manager switch --flake '.#{{hostname}}'
+
+rebuild-nixos: _pull
+    sudo nixos-rebuild --flake '.#{{hostname}}'
