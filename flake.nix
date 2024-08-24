@@ -10,6 +10,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -18,6 +22,7 @@
     nixpkgs-unstable,
     flake-utils,
     home-manager,
+    nix-darwin,
     ...
   }:
     {
@@ -139,6 +144,13 @@
               ];
             })
           ];
+        };
+      };
+
+      legacyPackages.darwinConfigurations = {
+        Maeve = nix-darwin.lib.darwinSystem {
+          modules = [./nix-darwin/host/maeve.nix];
+          specialArgs = {inherit unstable;};
         };
       };
 
