@@ -94,11 +94,13 @@
     # writing:
     obsidian
     vscode
+    unstable.zed-editor
     libreoffice-fresh
 
     # media:
     strawberry
     haruna
+    mpv
 
     # fun:
     prismlauncher

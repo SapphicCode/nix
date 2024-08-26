@@ -33,4 +33,4 @@ rebuild-hm: _pull
     home-manager switch --flake '.#{{hostname}}'
 
 rebuild-nixos: _pull
-    sudo nixos-rebuild --flake '.#{{hostname}}'
+    sudo nixos-rebuild switch --flake '.#{{hostname}}'

@@ -4,6 +4,7 @@
   services.xserver.desktopManager.gnome.enable = true;
   environment.systemPackages = with pkgs; [
     gnome.gnome-tweaks
+    gnomeExtensions.pop-shell
   ];
 
   # seems more well-behaved under Gnome:
