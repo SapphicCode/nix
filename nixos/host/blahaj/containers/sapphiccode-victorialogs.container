@@ -1,0 +1,16 @@
+[Unit]
+Description=Logging database server
+Wants=tailscaled.service
+After=tailscaled.service
+
+[Container]
+Image=docker.io/victoriametrics/victoria-logs:latest
+Volume=sapphiccode_victorialogs:/victoria-logs-data:rw,U
+PublishPort=100.67.28.115:9428:9428/tcp
+Exec=-retentionPeriod=100y
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

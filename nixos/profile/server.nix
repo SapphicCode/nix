@@ -7,6 +7,7 @@
     ../module/openssh.nix
     ../module/tailscale.nix
     ../module/user/sapphiccode.nix
+    ../module/podman.nix
     ../module/podman-user-quadlet.nix
   ];
 
@@ -124,11 +125,6 @@
     timerConfig.OnUnitActiveSec = "1h";
     wantedBy = ["timers.target"];
   };
-
-  # Software > Server stuff
-  virtualisation.podman.enable = true;
-  virtualisation.podman.dockerSocket.enable = true;
-  networking.firewall.trustedInterfaces = ["podman+"];
 
   system.stateVersion = "24.05";
 }

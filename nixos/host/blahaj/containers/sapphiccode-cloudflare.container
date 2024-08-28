@@ -1,0 +1,16 @@
+[Unit]
+Description=Cloudflare tunnel
+Wants=network-online.target
+After=network-online.target
+
+[Container]
+Image=docker.io/cloudflare/cloudflared:latest
+EnvironmentFile=/etc/creds/cloudflare.env
+Exec=tunnel --no-autoupdate --loglevel debug run
+Network=sapphiccode.network
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

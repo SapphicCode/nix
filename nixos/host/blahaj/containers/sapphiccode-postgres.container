@@ -1,0 +1,15 @@
+[Unit]
+Description=Cassandra's Postgres
+After=network-online.target
+
+[Container]
+Image=docker.io/library/postgres:15-alpine
+Environment=PGDATA=/data
+Volume=sapphiccode_postgres:/data
+Network=sapphiccode.network
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

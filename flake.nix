@@ -124,6 +124,7 @@
           specialArgs = {inherit unstable;};
           modules = [
             ./nixos/host/blahaj/hardware-configuration.nix
+            ./nixos/host/blahaj/containers.nix
             ./nixos/module/boot/systemd-boot.nix
             ./nixos/profile/server_${system}.nix
             ./nixos/module/user/hex.nix
