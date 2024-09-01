@@ -128,6 +128,7 @@
 
   # Escape hatch
   services.flatpak.enable = true;
+  xdg.portal.enable = true;
 
   # Program hooks
   nix.package = unstable.lix;
