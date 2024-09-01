@@ -126,6 +126,9 @@
     fira-code-nerdfont
   ];
 
+  # Escape hatch
+  services.flatpak.enable = true;
+
   # Program hooks
   nix.package = unstable.lix;
   nix.settings.experimental-features = ["nix-command" "flakes"];
