@@ -36,6 +36,7 @@
     xonsh
 
     # all remaining (occasional use) tools
+    mods
     charm
     skate
     ffmpeg
@@ -48,17 +49,6 @@
     yt-dlp
     jwt-cli
     fossil
-
-    # Python
-    python311Extra
-    python311Packages.black
-    python311Packages.isort
-    python310NoAliases
-    ruff
-    pyright
-    #pre-commit
-    poetry
-    pdm
     pipx # in case of fire break glass
 
     # cloud utils
@@ -68,18 +58,11 @@
     mongosh
     postgresql_16 # `psql`
 
-    # misc. other programming languages
-    go
-    gleam
-    zulu11
+    # programming languages in global context
+    python312
+    python312Packages.ipython
 
     # other programming language tooling
     stylua
-
-    # JS
-    bun
-    (writeShellScriptBin "node" ''
-      exec "${pkgs.bun}/bin/bun" "$@"
-    '')
   ];
 }
