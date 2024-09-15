@@ -7,6 +7,7 @@ Image=docker.io/louislam/uptime-kuma:1
 AutoUpdate=registry
 Volume=sapphiccode_uptimekuma:/app/data
 Network=sapphiccode.network
+AddCapability=CAP_NET_RAW
 
 [Service]
 Restart=on-failure
