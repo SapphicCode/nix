@@ -37,26 +37,23 @@
 
     # all remaining (occasional use) tools
     mods
-    charm
-    skate
-    ffmpeg
-    imagemagickBig
-    exiftool
-    libjxl
-    imagemagickBig
+    ollama
+    gh
     nb
-    #ollama
     yt-dlp
     jwt-cli
     fossil
     pipx # in case of fire break glass
 
+    # transcoding / image manipulation
+    ffmpeg
+    imagemagickBig
+    exiftool
+    libjxl
+    imagemagickBig
+
     # cloud utils
     awscli2
-
-    # database development
-    mongosh
-    postgresql_16 # `psql`
 
     # programming languages in global context
     python312
