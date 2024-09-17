@@ -1,0 +1,12 @@
+when:
+  - event: push
+
+steps:
+  - name: test
+    image: git.sapphiccode.net/sapphiccode/containers/fedora-with-lix:latest
+    commands:
+      - dnf install -y git
+      - . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+      - nix run home-manager -- build --flake .#generic_everything
+    volumes:
+      - wci_nixstore_cache:/nix/store
