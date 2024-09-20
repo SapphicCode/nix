@@ -83,7 +83,8 @@
   # Extra packages
   environment.systemPackages = with pkgs; [
     # web:
-    firefox
+    firefox-beta
+    floorp
     vivaldi
     chromium
 
@@ -104,6 +105,9 @@
 
     # fun:
     prismlauncher
+    gamescope
+    unstable.lmstudio
+    unstable.qFlipper
 
     # utility:
     gnome.simple-scan
@@ -141,6 +145,7 @@
   programs._1password-gui.enable = true;
   environment.etc."1password/custom_allowed_browsers" = {
     text = ''
+      .floorp-wrapped
       vivaldi-bin
     '';
     mode = "0644";
