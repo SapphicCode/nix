@@ -110,7 +110,7 @@
           modules = [
             ./nixos/host/pandora/hardware-configuration.nix
             ./nixos/profile/desktop_${system}.nix
-            ./nixos/module/gnome.nix
+            ./nixos/module/plasma6.nix
             ./nixos/module/framework-13.nix
             ({config, ...}: {
               networking.hostName = "pandora";
