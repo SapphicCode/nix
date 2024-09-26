@@ -107,6 +107,7 @@
       ${pkgs.fd}/bin/fd --absolute-path --hidden --full-path 'containers/storage/volumes/([0-9a-f]{64}|\w+_cache)$' /var/lib /home > $generated_excludes
 
       ${pkgs.restic}/bin/restic backup \
+        --one-file-system \
         --exclude-caches \
         --exclude-file $generated_excludes \
         --exclude /var/lib/containers/storage/overlay \
