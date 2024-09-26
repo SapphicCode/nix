@@ -137,6 +137,11 @@
               users.users.sapphiccode.linger = true;
               users.users.hex.linger = true;
 
+              services.k3s = {
+                enable = true;
+                role = "server";
+              };
+
               networking.firewall.allowedTCPPortRanges = [
                 {
                   from = 15080;
