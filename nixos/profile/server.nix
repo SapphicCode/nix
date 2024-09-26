@@ -110,6 +110,7 @@
         --exclude-caches \
         --exclude-file $generated_excludes \
         --exclude /var/lib/containers/storage/overlay \
+        --exclude /var/lib/rancher/k3s/agent/containerd \
         --exclude '/home/*/.local/share/containers/storage/overlay' \
         --exclude '/home/*/.cache' \
         --exclude '/home/*/Downloads' \
