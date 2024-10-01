@@ -6,6 +6,7 @@
     "containers/systemd/sapphiccode-cloudflare.container".source = ./containers/sapphiccode-cloudflare.container;
     "containers/systemd/sapphiccode-forgejo.container".source = ./containers/sapphiccode-forgejo.container;
     "containers/systemd/sapphiccode-uptimekuma.container".source = ./containers/sapphiccode-uptimekuma.container;
+    "containers/systemd/sapphiccode-pufferpanel.container".source = ./containers/sapphiccode-pufferpanel.container;
 
     # CI/CD for Forgejo
     "containers/systemd/sapphiccode-woodpecker-server.container".source = ./containers/sapphiccode-woodpecker-server.container;
