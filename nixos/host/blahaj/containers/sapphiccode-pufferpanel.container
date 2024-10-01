@@ -1,5 +1,5 @@
 [Unit]
-Description=Cassandra's Pufferpanel
+Description=Cassandra's PufferPanel
 After=network-online.target
 Wants=network-online.target
 
