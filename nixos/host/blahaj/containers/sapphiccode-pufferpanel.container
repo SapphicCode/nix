@@ -8,8 +8,8 @@ Image=docker.io/pufferpanel/pufferpanel:latest
 Volume=sapphiccode_pufferpanel_config:/etc/pufferpanel
 Volume=sapphiccode_pufferpanel_data:/var/lib/pufferpanel
 Network=sapphiccode.network
-PublishPort=5657/tcp
-PublishPort=25565-25575/tcp
+PublishPort=5657:5657/tcp
+PublishPort=25565-25575:25565-25575/tcp
 
 [Service]
 Restart=on-failure
