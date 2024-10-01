@@ -1,6 +1,7 @@
 [Unit]
 Description=Cassandra's Postgres
 After=network-online.target
+Wants=network-online.target
 
 [Container]
 Image=docker.io/library/postgres:15-alpine

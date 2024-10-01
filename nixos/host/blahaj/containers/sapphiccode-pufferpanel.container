@@ -1,14 +1,12 @@
 [Unit]
-Description=Cassandra's Uptime Kuma
+Description=Cassandra's Pufferpanel
 After=network-online.target
 Wants=network-online.target
 
 [Container]
-Image=docker.io/louislam/uptime-kuma:1
-AutoUpdate=registry
-Volume=sapphiccode_uptimekuma:/app/data
+Image=docker.io/pufferpanel/pufferpanel:latest
+Volume=sapphiccode_pufferpanel:/var/lib/pufferpanel
 Network=sapphiccode.network
-AddCapability=CAP_NET_RAW
 
 [Service]
 Restart=on-failure
