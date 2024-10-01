@@ -5,7 +5,8 @@ Wants=network-online.target
 
 [Container]
 Image=docker.io/pufferpanel/pufferpanel:latest
-Volume=sapphiccode_pufferpanel:/var/lib/pufferpanel
+Volume=sapphiccode_pufferpanel_config:/etc/pufferpanel
+Volume=sapphiccode_pufferpanel_data:/var/lib/pufferpanel
 Network=sapphiccode.network
 PublishPort=5657/tcp
 PublishPort=25565-25575/tcp
