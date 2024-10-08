@@ -44,6 +44,7 @@
     jwt-cli
     fossil
     pipx # in case of fire break glass
+    jujutsu
 
     # transcoding / image manipulation
     ffmpeg
