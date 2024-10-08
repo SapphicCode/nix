@@ -53,6 +53,9 @@
   };
   hardware.bluetooth.enable = true;
 
+  # Hardware > Graphics
+  environment.sessionVariables."MOZ_ENABLE_WAYLAND" = "1";
+
   # Hardware > Printing
   services.avahi.enable = true;
   services.printing.enable = true;
@@ -146,7 +149,7 @@
   programs._1password-gui.enable = true;
   environment.etc."1password/custom_allowed_browsers" = {
     text = ''
-      .floorp-wrapped
+      floorp
       vivaldi-bin
     '';
     mode = "0644";
