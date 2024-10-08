@@ -21,6 +21,7 @@
     htop
     ncdu
     neovim
+    micro
 
     # tools
     pv
