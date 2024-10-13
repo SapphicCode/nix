@@ -4,7 +4,7 @@ Wants=network-online.target podman.socket
 After=network-online.target podman.socket
 
 [Container]
-Image=docker.io/woodpeckerci/woodpecker-agent:v2.7.0-alpine
+Image=docker.io/woodpeckerci/woodpecker-agent:v2.7.1-alpine
 EnvironmentFile=/etc/creds/woodpecker-agent.env
 Volume=/var/run/podman/podman.sock:/var/run/docker.sock:ro
 Volume=sapphiccode_woodpecker_agent:/etc/woodpecker

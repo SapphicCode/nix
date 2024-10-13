@@ -4,7 +4,7 @@ After=network-online.target sapphiccode-postgres.service
 Wants=network-online.target sapphiccode-postgres.service
 
 [Container]
-Image=docker.io/woodpeckerci/woodpecker-server:v2.7.0-alpine
+Image=docker.io/woodpeckerci/woodpecker-server:v2.7.1-alpine
 EnvironmentFile=/etc/creds/woodpecker-server.env
 Network=sapphiccode.network
 
