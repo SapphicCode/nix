@@ -140,6 +140,7 @@
               services.k3s = {
                 enable = true;
                 role = "server";
+                extraFlags = "--tls-san=blahaj.sapphiccode.net --tls-san=blahaj-ng.atlas-ide.ts.net";
               };
 
               networking.firewall.allowedTCPPortRanges = [
