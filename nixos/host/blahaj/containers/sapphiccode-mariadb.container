@@ -1,0 +1,17 @@
+[Unit]
+Description=Cassandra's MariaDB
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=lscr.io/linuxserver/mariadb:latest
+AutoUpdate=registry
+Volume=sapphiccode_mariadb:/config
+Network=sapphiccode.network
+Network=sapphiccode-mariadb.network
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

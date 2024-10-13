@@ -1,0 +1,16 @@
+[Unit]
+Description=Cassandra's ArchiveBox
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=docker.io/archivebox/archivebox:latest
+AutoUpdate=registry
+Volume=sapphiccode_archivebox:/data:U
+Network=sapphiccode.network
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,19 @@
+[Unit]
+Description=Cassandra's BookStack
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=lscr.io/linuxserver/bookstack:latest
+AutoUpdate=registry
+Environment=APP_URL=https://docs.sapphiccode.net
+EnvironmentFile=/etc/creds/bookstack.env
+Volume=sapphiccode_bookstack:/config
+Network=sapphiccode.network
+Network=sapphiccode-mariadb.network
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
