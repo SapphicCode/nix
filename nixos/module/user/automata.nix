@@ -8,6 +8,7 @@
     group = "wheel";
     description = "CI system user";
     shell = pkgs.bash;
+    packages = with pkgs; [git];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICTeL+/pRmboNs+wga7IZ4OkgCcUN9rwC8mjTi3b9yKU"
     ];
