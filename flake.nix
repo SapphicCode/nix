@@ -51,6 +51,7 @@
         tailscale = ./nixos/module/tailscale.nix;
         profile_server = ./nixos/profile/server.nix;
         profile_desktop = ./nixos/profile/desktop.nix;
+        user_automata = ./nixos/users/user/automata.nix;
       };
 
       overlays = {
