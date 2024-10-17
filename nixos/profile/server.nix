@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   unstable,
   ...
@@ -74,11 +75,34 @@
         journal = {
           type = "journald";
         };
+        kubernetes = {
+          # TODO: set up permissions using activation script
+          type = "kubernetes_logs";
+          self_node_name = config.networking.hostName;
+          kube_config_file = "/etc/rancher/k3s/k3s.yaml";
+        };
+      };
+      transforms = {
+        journal_std = {
+          type = "remap";
+          inputs = ["journal"];
+          source = ''
+            ._stream = encode_logfmt({"host": .host, "syslog_id": .SYSLOG_IDENTIFIER, "systemd_slice": ._SYSTEMD_SLICE})
+          '';
+        };
+        kubernetes_std = {
+          type = "remap";
+          inputs = ["kubernetes"];
+          source = ''
+            ._stream = encode_logfmt({"namespace": .kubernetes.pod_namespace, "pod": .kubernetes.pod_name, "container": .kubernetes.container_name})
+            .host = .kubernetes.pod_node_name
+          '';
+        };
       };
       sinks = {
-        victorialogs = {
+        victorialogs_journal = {
           type = "http";
-          inputs = ["journal"];
+          inputs = ["journal_std" "kubernetes_std"];
           encoding = {
             codec = "json";
           };
@@ -86,7 +110,7 @@
             method = "newline_delimited";
           };
           compression = "gzip";
-          uri = "http://100.67.28.115:9428/insert/jsonline?_msg_field=message&_time_field=timestamp&_stream_fields=host,SYSLOG_IDENTIFIER,_SYSTEMD_SLICE";
+          uri = "http://100.67.28.115:9428/insert/jsonline?_msg_field=message&_time_field=timestamp&_stream_fields=_stream";
         };
       };
     };
