@@ -4,7 +4,7 @@ Wants=network-online.target
 After=network-online.target
 
 [Container]
-Image=codeberg.org/forgejo/forgejo:8-rootless
+Image=codeberg.org/forgejo/forgejo:9-rootless
 AutoUpdate=registry
 EnvironmentFile=/etc/creds/forgejo.env
 Volume=sapphiccode_gitea:/var/lib/gitea
