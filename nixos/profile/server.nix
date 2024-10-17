@@ -8,6 +8,7 @@
     ../module/openssh.nix
     ../module/tailscale.nix
     ../module/user/sapphiccode.nix
+    ../module/user/automata.nix
     ../module/podman.nix
     ../module/podman-user-quadlet.nix
   ];
