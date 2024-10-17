@@ -1,0 +1,17 @@
+when:
+  - event: push
+    branch: main
+
+matrix:
+  host:
+    - blahaj
+
+steps:
+  - name: deploy
+    image: quay.io/sapphiccode/alpine-cicd:latest
+    volumes:
+      - wci_ssh:/root/.ssh
+    commands:
+      - origin=$$(git remote get-url origin)
+      - rev=$$(git rev-parse HEAD)
+      - ssh automata@${host}.sapphiccode.net sudo nixos-rebuild switch --flake "git+$${origin}?rev=$${rev}#${host}"
