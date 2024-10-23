@@ -27,17 +27,17 @@
   }:
     {
       homeConfigurations = {
-        "sapphiccode@pandora" = home-manager.lib.homeManagerConfiguration {
+        "pandora" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs-unstable.legacyPackages."x86_64-linux";
           modules = [./home-manager/host/pandora.nix];
         };
-        "sapphiccode@hollydeck" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs-unstable.legacyPackages."x86_64-linux";
-          modules = [./home-manager/host/hollydeck_bazzite.nix];
-        };
-        "deck@hollydeck" = home-manager.lib.homeManagerConfiguration {
+        "hollydeck" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs-unstable.legacyPackages."x86_64-linux";
           modules = [./home-manager/host/hollydeck_steamos.nix];
+        };
+        "blahaj" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs-unstable.legacyPackages."x86_64-linux";
+          modules = [./home-manager/host/blahaj.nix];
         };
       };
 

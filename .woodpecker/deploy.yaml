@@ -14,4 +14,7 @@ steps:
     commands:
       - origin=$$(git remote get-url origin)
       - rev=$$(git rev-parse HEAD)
-      - ssh automata@${host}.sapphiccode.net sudo nixos-rebuild switch --flake "git+$${origin}?rev=$${rev}#${host}"
+      - flake="git+$${origin}?rev=$${rev}#${host}"
+      - echo "$$flake"
+      - ssh automata@${host}.sapphiccode.net sudo nixos-rebuild switch --flake "$$flake"
+      - ssh automata@${host}.sapphiccode.net sudo -u sapphiccode home-manager switch --flake "$$flake"
