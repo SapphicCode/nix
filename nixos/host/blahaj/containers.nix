@@ -18,6 +18,7 @@
     # Databases
     "containers/systemd/sapphiccode-postgres.container".source = ./containers/sapphiccode-postgres.container;
     "containers/systemd/sapphiccode-mariadb.container".source = ./containers/sapphiccode-mariadb.container;
+    "containers/systemd/sapphiccode-mongodb.container".source = ./containers/sapphiccode-mongodb.container;
     "containers/systemd/sapphiccode-victorialogs.container".source = ./containers/sapphiccode-victorialogs.container;
     "containers/systemd/sapphiccode-victoriametrics.container".source = ./containers/sapphiccode-victoriametrics.container;
   };

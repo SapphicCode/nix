@@ -1,0 +1,17 @@
+[Unit]
+Description=Cassandra's MongoDB
+After=network-online.target tailscaled.service
+Wants=network-online.target tailscaled.service
+
+[Container]
+Image=docker.io/library/mongo:8
+Exec=--auth
+AutoUpdate=registry
+Volume=sapphiccode_mongodb:/data/db
+PublishPort=100.67.28.115:27017:27017/tcp
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
