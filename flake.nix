@@ -84,6 +84,7 @@
 
         "generic_minimal" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable;
+          extraSpecialArgs = {stable = pkgs;};
           modules = [
             ./home-manager/host/generic.nix
             ./home-manager/profile/minimal.nix
@@ -91,6 +92,7 @@
         };
         "generic_comfy" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable;
+          extraSpecialArgs = {stable = pkgs;};
           modules = [
             ./home-manager/host/generic.nix
             ./home-manager/profile/comfortable.nix
@@ -98,6 +100,7 @@
         };
         "generic_everything" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable;
+          extraSpecialArgs = {stable = pkgs;};
           modules = [
             ./home-manager/host/generic.nix
             ./home-manager/profile/everything.nix
