@@ -5,6 +5,7 @@ _default:
 
 _pull:
     git pull
+    git checkout main
 
 pre-commit: fmt
 
@@ -28,9 +29,9 @@ update: _pull
     # commit our update
     git commit -m "flake: update inputs"
 
-rebuild-hm: _pull
+switch-hm: _pull
     chezmoi update -a
     home-manager switch --flake '.#{{hostname}}'
 
-rebuild-nixos: _pull
+switch-nixos: _pull
     sudo nixos-rebuild switch --flake '.#{{hostname}}'

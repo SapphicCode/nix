@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  stable,
+  ...
+}: {
   imports = [
     ./minimal.nix
   ];
@@ -32,8 +36,7 @@
     just
     halp
     gum
-    taskwarrior
-    numbat
+    stable.numbat
     devbox
   ];
 }

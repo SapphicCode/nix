@@ -26,21 +26,6 @@
     ...
   }:
     {
-      homeConfigurations = {
-        "pandora" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs-unstable.legacyPackages."x86_64-linux";
-          modules = [./home-manager/host/pandora.nix];
-        };
-        "hollydeck" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs-unstable.legacyPackages."x86_64-linux";
-          modules = [./home-manager/host/hollydeck_steamos.nix];
-        };
-        "blahaj" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs-unstable.legacyPackages."x86_64-linux";
-          modules = [./home-manager/host/blahaj.nix];
-        };
-      };
-
       templates.local-nixos = {
         path = ./template/nixos;
         description = "A local NixOS flake tracking this one.";
@@ -76,6 +61,27 @@
       formatter = pkgs.alejandra;
 
       legacyPackages.homeConfigurations = {
+        "Maeve" = home-manager.lib.homeManagerConfiguration {
+          pkgs = unstable;
+          extraSpecialArgs = {stable = pkgs;};
+          modules = [./home-manager/host/Maeve.nix];
+        };
+        "pandora" = home-manager.lib.homeManagerConfiguration {
+          pkgs = unstable;
+          extraSpecialArgs = {stable = pkgs;};
+          modules = [./home-manager/host/pandora.nix];
+        };
+        "hollydeck" = home-manager.lib.homeManagerConfiguration {
+          pkgs = unstable;
+          extraSpecialArgs = {stable = pkgs;};
+          modules = [./home-manager/host/hollydeck_steamos.nix];
+        };
+        "blahaj" = home-manager.lib.homeManagerConfiguration {
+          pkgs = unstable;
+          extraSpecialArgs = {stable = pkgs;};
+          modules = [./home-manager/host/blahaj.nix];
+        };
+
         "generic_minimal" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable;
           modules = [
@@ -96,11 +102,6 @@
             ./home-manager/host/generic.nix
             ./home-manager/profile/everything.nix
           ];
-        };
-
-        "Maeve" = home-manager.lib.homeManagerConfiguration {
-          pkgs = unstable;
-          modules = [./home-manager/host/Maeve.nix];
         };
       };
 
