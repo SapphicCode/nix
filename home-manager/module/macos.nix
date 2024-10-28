@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     _1password
-    bash
+    bashInteractive
     curl
     gnugrep
     gnused
