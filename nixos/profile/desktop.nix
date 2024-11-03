@@ -106,6 +106,8 @@
     strawberry
     haruna
     mpv
+    obs-studio
+    kdenlive
 
     # fun:
     prismlauncher

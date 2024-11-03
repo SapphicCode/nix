@@ -9,6 +9,8 @@
 
     # fun:
     sunvox
+    lutris
+    wine
   ];
   programs.steam = {
     enable = true;
