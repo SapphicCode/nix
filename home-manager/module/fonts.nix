@@ -6,5 +6,7 @@
 
     fira-code
     fira-code-nerdfont
+    iosevka
+    iosevka-comfy.comfy
   ];
 }
