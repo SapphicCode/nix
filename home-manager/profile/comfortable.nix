@@ -12,7 +12,7 @@
 
     # shell plugins
     zoxide
-    atuin
+    #atuin
 
     # fancier TUIs
     btop
