@@ -35,3 +35,6 @@ switch-hm: _pull
 
 switch-nixos: _pull
     sudo nixos-rebuild switch --flake '.#{{hostname}}'
+
+switch-darwin: _pull
+    nix run nix-darwin -- switch --flake '.#{{hostname}}'
