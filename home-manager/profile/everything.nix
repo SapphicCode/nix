@@ -61,6 +61,7 @@
     # programming languages in global context
     python312
     python312Packages.ipython
+    go
 
     # other programming language tooling
     stylua
