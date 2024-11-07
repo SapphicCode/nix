@@ -27,6 +27,7 @@
     pv
     lsof
     fd
+    eza
     age
     age-plugin-yubikey
     zstd
