@@ -11,6 +11,7 @@
     ../module/tailscale.nix
     ../module/openssh.nix
     ../module/podman-user-quadlet.nix
+    ../module/printing.nix
   ];
   # Hardware > Boot
   boot.loader.systemd-boot.enable = true;
@@ -55,14 +56,6 @@
 
   # Hardware > Graphics
   environment.sessionVariables."MOZ_ENABLE_WAYLAND" = "1";
-
-  # Hardware > Printing
-  services.avahi.enable = true;
-  services.printing.enable = true;
-  services.printing.drivers = with pkgs; [
-    epson-escpr
-    epson-escpr2
-  ];
 
   # Hardware > Scanning
   hardware.sane.enable = true;

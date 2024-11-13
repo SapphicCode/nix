@@ -34,9 +34,10 @@
       nixosModules = {
         openssh = ./nixos/module/openssh.nix;
         tailscale = ./nixos/module/tailscale.nix;
+        printing = ./nixos/module/printing.nix;
+        user_automata = ./nixos/users/user/automata.nix;
         profile_server = ./nixos/profile/server.nix;
         profile_desktop = ./nixos/profile/desktop.nix;
-        user_automata = ./nixos/users/user/automata.nix;
       };
 
       overlays = {
