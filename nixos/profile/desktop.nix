@@ -127,7 +127,7 @@
     # fonts:
     fira-code
     fira-code-nerdfont
-  ];
+  ] ++ import ../../pkgset/99-fonts.nix {inherit pkgs;};
 
   # Escape hatch
   services.flatpak.enable = true;

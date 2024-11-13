@@ -4,42 +4,7 @@
   ...
 }: {
   nixpkgs.config.allowUnfree = true;
-  home.packages = with pkgs; [
-    # bare minimum
-    gitFull
-    git-lfs
-    delta # pager for git
-    chezmoi
-
-    # shell
-    fish
-    starship
-    direnv
-
-    # TUIs
-    tmux
-    htop
-    ncdu
-    neovim
-    micro
-
-    # tools
-    pv
-    lsof
-    fd
-    eza
-    age
-    age-plugin-yubikey
-    zstd
-    jq
-    yq-go
-    rclone
-    mkpasswd
-    pwgen
-
-    # dev tools
-    alejandra
-  ];
+  home.packages = import ../../pkgset/00-core.nix {inherit pkgs;} ++ import ../../pkgset/10-minimal.nix {inherit pkgs;};
 
   programs.home-manager.enable = true;
   programs.direnv.nix-direnv.enable = true;
