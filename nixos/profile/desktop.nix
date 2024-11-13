@@ -78,56 +78,58 @@
   # services.displayManager.defaultSession = "plasmawayland";
 
   # Extra packages
-  environment.systemPackages = with pkgs; [
-    # web:
-    firefox-beta
-    floorp
-    vivaldi
-    chromium
+  environment.systemPackages = with pkgs;
+    [
+      # web:
+      firefox-beta
+      floorp
+      vivaldi
+      chromium
 
-    # chat:
-    telegram-desktop
-    signal-desktop
+      # chat:
+      telegram-desktop
+      signal-desktop
 
-    # writing:
-    obsidian
-    vscode
-    unstable.zed-editor
-    libreoffice-fresh
+      # writing:
+      obsidian
+      vscode
+      unstable.zed-editor
+      libreoffice-fresh
 
-    # media:
-    strawberry
-    haruna
-    mpv
-    obs-studio
-    kdenlive
+      # media:
+      strawberry
+      haruna
+      mpv
+      obs-studio
+      kdenlive
 
-    # fun:
-    prismlauncher
-    gamescope
-    unstable.lmstudio
-    unstable.qFlipper
+      # fun:
+      prismlauncher
+      gamescope
+      unstable.lmstudio
+      unstable.qFlipper
 
-    # utility:
-    gnome.simple-scan
-    krename
-    easyeffects
-    mkvtoolnix
-    wezterm
+      # utility:
+      gnome.simple-scan
+      krename
+      easyeffects
+      mkvtoolnix
+      wezterm
 
-    # sway:
-    # rofi-wayland
-    # pamixer
-    # waybar
-    # font-awesome
-    # brightnessctl
-    # playerctl
-    # wezterm
+      # sway:
+      # rofi-wayland
+      # pamixer
+      # waybar
+      # font-awesome
+      # brightnessctl
+      # playerctl
+      # wezterm
 
-    # fonts:
-    fira-code
-    fira-code-nerdfont
-  ] ++ import ../../pkgset/99-fonts.nix {inherit pkgs;};
+      # fonts:
+      fira-code
+      fira-code-nerdfont
+    ]
+    ++ import ../../pkgset/99-fonts.nix {inherit pkgs;};
 
   # Escape hatch
   services.flatpak.enable = true;
