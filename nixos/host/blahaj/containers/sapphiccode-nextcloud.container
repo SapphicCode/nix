@@ -1,0 +1,17 @@
+[Unit]
+Description=Cassandra's Nextcloud
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=lscr.io/linuxserver/nextcloud:latest
+AutoUpdate=registry
+Volume=sapphiccode_nextcloud_config:/config
+Volume=sapphiccode_nextcloud_data:/data
+Network=sapphiccode.network
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
