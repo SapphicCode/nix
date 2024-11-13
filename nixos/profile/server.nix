@@ -11,6 +11,7 @@
     ../module/user/automata.nix
     ../module/podman.nix
     ../module/podman-user-quadlet.nix
+    ../module/packages.nix
   ];
 
   # Hardware > Memory
