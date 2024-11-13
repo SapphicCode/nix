@@ -1,6 +1,6 @@
 {pkgs}:
 with pkgs;
   [
-    crypsetup
+    cryptsetup
   ]
   ++ import ./00-core.nix {inherit pkgs;}
