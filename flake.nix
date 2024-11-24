@@ -67,6 +67,11 @@
           extraSpecialArgs = {stable = pkgs;};
           modules = [./home-manager/host/Maeve.nix];
         };
+        "Clementine" = home-manager.lib.homeManagerConfiguration {
+          pkgs = unstable;
+          extraSpecialArgs = {stable = pkgs;};
+          modules = [./home-manager/host/Clementine.nix];
+        };
         "pandora" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable;
           extraSpecialArgs = {stable = pkgs;};

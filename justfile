@@ -1,4 +1,4 @@
-hostname := `hostname -s`
+hostname := `if [ "$(uname)" = "Darwin" ]; then scutil --get ComputerName; else hostname -s; fi`
 
 _default:
     just --list
