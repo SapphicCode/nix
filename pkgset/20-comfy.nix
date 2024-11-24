@@ -6,6 +6,9 @@ with pkgs;
   [
     nushell # crazy powerful shell
 
+    # git
+    mergiraf
+
     # shell plugins
     zoxide
     #atuin

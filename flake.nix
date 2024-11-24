@@ -6,6 +6,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/76c7c2dd88be617a8a9fdda78f2845eafbb40088";
 
     flake-utils.url = "github:numtide/flake-utils";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,6 +14,11 @@
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    pkg-mergiraf = {
+      url = "git+https://codeberg.org/mergiraf/mergiraf";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
@@ -23,6 +29,7 @@
     flake-utils,
     home-manager,
     nix-darwin,
+    pkg-mergiraf,
     ...
   }:
     {
@@ -51,13 +58,20 @@
         allowUnfree = true;
         permittedInsecurePackages = ["electron-25.9.0"]; # obsidian
       };
+      overlays = [
+        (final: prev: {
+          mergiraf = pkg-mergiraf.packages.${system}.mergiraf;
+        })
+      ];
       pkgs = import nixpkgs {
         inherit system config;
         overlays = [
           self.overlays.thorium-browser
-        ];
+        ] ++ overlays;
       };
-      unstable = import nixpkgs-unstable {inherit system config;};
+      unstable = import nixpkgs-unstable {
+        inherit system config overlays;
+      };
     in {
       formatter = pkgs.alejandra;
 
