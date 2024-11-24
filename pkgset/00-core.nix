@@ -1,22 +1,31 @@
 {pkgs}:
-with pkgs; [
-  # utility
-  curl
-  pv
-  gptfdisk
-  gitFull
+with pkgs;
+  [
+    # utility
+    curl
+    pv
+    gptfdisk
+    gitFull
 
-  # finding
-  fd
-  ripgrep
+    # finding
+    fd
+    ripgrep
 
-  # parsing
-  jq
-  yq-go
+    # parsing
+    jq
+    yq-go
 
-  # compressing
-  zstd
+    # compressing
+    zstd
 
-  # editing
-  micro
-]
+    # editing
+    micro
+  ]
+  ++ (
+    if pkgs.stdenv.isLinux
+    then
+      with pkgs; [
+        cryptsetup
+      ]
+    else []
+  )
