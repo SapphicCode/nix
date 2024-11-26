@@ -65,9 +65,11 @@
       ];
       pkgs = import nixpkgs {
         inherit system config;
-        overlays = [
-          self.overlays.thorium-browser
-        ] ++ overlays;
+        overlays =
+          [
+            self.overlays.thorium-browser
+          ]
+          ++ overlays;
       };
       unstable = import nixpkgs-unstable {
         inherit system config overlays;
@@ -161,6 +163,8 @@
 
               users.users.sapphiccode.linger = true;
               users.users.hex.linger = true;
+
+              programs.nix-ld.enable = true;
 
               services.k3s = {
                 enable = true;
