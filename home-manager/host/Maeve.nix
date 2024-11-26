@@ -9,11 +9,8 @@
 
   services.syncthing.enable = true;
 
-  home.packages = with pkgs;
-    [
-      ollama
-    ]
-    ++ import ../../pkgset/99-fonts.nix {inherit pkgs;}
+  home.packages =
+    import ../../pkgset/99-fonts.nix {inherit pkgs;}
     ++ import ../../pkgset/99-macos.nix {inherit pkgs;};
 
   imports = [

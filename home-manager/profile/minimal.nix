@@ -10,7 +10,7 @@
   programs.direnv.nix-direnv.enable = true;
 
   home.activation.chezmoi = lib.hm.dag.entryAfter ["installPackages"] ''
-    PATH="$HOME/.nix-profile/bin:$PATH"
+    PATH="${pkgs.coreutils}/bin:$HOME/.nix-profile/bin:$PATH"
     run chezmoi init git.sapphiccode.net/SapphicCode/dotfiles
     run chezmoi update -a
     run chezmoi git status

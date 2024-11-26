@@ -1,6 +1,7 @@
 {
   pkgs,
   stable,
+  config,
   ...
 }: {
   home.username = "sapphiccode";
@@ -9,9 +10,20 @@
 
   services.syncthing.enable = true;
 
+  launchd.agents.yubikey-agent = {
+    enable = true;
+    config = {
+      ProgramArguments = ["${pkgs.yubikey-agent}/bin/yubikey-agent" "-l" "${config.home.homeDirectory}/Library/Caches/yubikey-agent.sock"];
+      KeepAlive = {
+        Crashed = true;
+        SuccessfulExit = false;
+      };
+    };
+  };
+
   home.packages = with pkgs;
     [
-      ollama
+      yubikey-agent
     ]
     ++ import ../../pkgset/99-fonts.nix {inherit pkgs;}
     ++ import ../../pkgset/99-macos.nix {inherit pkgs;};

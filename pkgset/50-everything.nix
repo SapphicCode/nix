@@ -15,6 +15,7 @@ with pkgs; [
   jujutsu
   taskwarrior3
   taskwarrior-tui
+  yubikey-manager
 
   # transcoding / image manipulation
   ffmpeg
