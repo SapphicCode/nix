@@ -15,6 +15,7 @@ with pkgs;
 
     # fancier TUIs
     btop
+    zellij
 
     # neovim soft dependencies
     efm-langserver
@@ -36,6 +37,7 @@ with pkgs;
     halp
     gum
     devbox
+    pueue
   ]
   ++ (
     if pkgs.stdenv.isDarwin

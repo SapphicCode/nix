@@ -10,17 +10,6 @@
 
   services.syncthing.enable = true;
 
-  launchd.agents.yubikey-agent = {
-    enable = true;
-    config = {
-      ProgramArguments = ["${pkgs.yubikey-agent}/bin/yubikey-agent" "-l" "${config.home.homeDirectory}/Library/Caches/yubikey-agent.sock"];
-      KeepAlive = {
-        Crashed = true;
-        SuccessfulExit = false;
-      };
-    };
-  };
-
   home.packages = with pkgs;
     [
       yubikey-agent
@@ -30,5 +19,6 @@
 
   imports = [
     ../profile/everything.nix
+    ../module/macos.nix
   ];
 }
