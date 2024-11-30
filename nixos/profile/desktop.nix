@@ -94,7 +94,7 @@
       obsidian
       vscode
       unstable.zed-editor
-      libreoffice-fresh
+      #libreoffice-fresh
 
       # media:
       strawberry
