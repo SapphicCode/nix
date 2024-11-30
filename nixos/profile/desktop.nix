@@ -81,9 +81,7 @@
   environment.systemPackages = with pkgs;
     [
       # web:
-      firefox-beta
       floorp
-      vivaldi
       chromium
 
       # chat:
@@ -148,6 +146,8 @@
     text = ''
       floorp
       vivaldi-bin
+      zen
+      zen-bin
     '';
     mode = "0644";
   };
