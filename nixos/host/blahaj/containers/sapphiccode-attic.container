@@ -1,0 +1,17 @@
+[Unit]
+Description=Cassandra's Nix cache
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=ghcr.io/zhaofengli/attic:latest
+AutoUpdate=registry
+Volume=sapphiccode_attic_config:/var/empty/.config/attic
+Volume=sapphiccode_attic_cache:/var/empty/.local/share/attic
+PublishPort=8080:8080/tcp
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
