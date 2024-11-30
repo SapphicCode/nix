@@ -14,6 +14,7 @@
       ExecStart = "${pkgs.pueue}/bin/pueued";
       Restart = "on-failure";
     };
+    Install.WantedBy = ["default.target"];
   };
   home.packages = with pkgs; [yubikey-agent];
 }
