@@ -6,6 +6,7 @@
       ExecStart = "${pkgs.yubikey-agent}/bin/yubikey-agent -l %h/.cache/yubikey-agent.sock";
       Restart = "on-failure";
     };
+    Install.WantedBy = ["default.target"];
   };
   systemd.user.services.pueue = {
     Unit.Description = "pueue daemon";
