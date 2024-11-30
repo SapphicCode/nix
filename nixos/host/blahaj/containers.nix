@@ -11,6 +11,7 @@
     "containers/systemd/sapphiccode-archivebox.container".source = ./containers/sapphiccode-archivebox.container;
     "containers/systemd/sapphiccode-bookstack.container".source = ./containers/sapphiccode-bookstack.container;
     "containers/systemd/sapphiccode-nextcloud.container".source = ./containers/sapphiccode-nextcloud.container;
+    "containers/systemd/sapphiccode-attic.container".source = ./containers/sapphiccode-attic.container;
 
     # CI/CD for Forgejo
     "containers/systemd/sapphiccode-woodpecker-server.container".source = ./containers/sapphiccode-woodpecker-server.container;
