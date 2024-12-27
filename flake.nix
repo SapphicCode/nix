@@ -54,7 +54,9 @@
       };
       overlays = [
         (final: prev: {
-
+          numbat = prev.numbat.overrideAttrs (self: {
+            meta = self.meta // {broken = false;};
+          });
         })
       ];
       pkgs = import nixpkgs {
