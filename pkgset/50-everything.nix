@@ -28,7 +28,7 @@ with pkgs; [
   imagemagickBig
 
   # cloud utils
-  fallback.awscli2
+  # awscli2 # (broken)
 
   # programming languages in global context
   python312
