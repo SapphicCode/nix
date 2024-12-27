@@ -30,7 +30,6 @@ update OFFSET='3day': _pull
     git commit -m "flake: update inputs"
 
 switch-hm: _pull
-    chezmoi update -a
     home-manager switch --flake '.#{{hostname}}'
 
 switch-nixos: _pull

@@ -41,6 +41,6 @@ with pkgs;
   ]
   ++ (
     if pkgs.stdenv.isDarwin
-    then [fallback.numbat]
+    then []
     else [pkgs.numbat]
   )

@@ -5,7 +5,7 @@ with pkgs;
     curl
     pv
     gptfdisk
-    gitFull
+    git
 
     # finding
     fd

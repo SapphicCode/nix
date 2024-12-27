@@ -5,7 +5,7 @@ with pkgs; [
   merriweather
 
   fira-code
-  fira-code-nerdfont
+  nerd-fonts.fira-code
   iosevka
   iosevka-comfy.comfy
   departure-mono

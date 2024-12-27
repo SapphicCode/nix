@@ -1,4 +1,7 @@
-{pkgs}:
+{
+  pkgs,
+  fallback ? pkgs,
+}:
 with pkgs; [
   # more shells!
   xonsh
@@ -25,7 +28,7 @@ with pkgs; [
   imagemagickBig
 
   # cloud utils
-  awscli2
+  fallback.awscli2
 
   # programming languages in global context
   python312

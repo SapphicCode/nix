@@ -2,8 +2,8 @@
   description = "Cassandra's everything flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/e897da8080bec8cbb6026c680818a035656c8da7";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/446b013ec787228fe8d8ae04c76788812b54ec13";
 
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -15,11 +15,6 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    pkg-mergiraf = {
-      url = "git+https://codeberg.org/mergiraf/mergiraf";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   outputs = {
@@ -29,7 +24,6 @@
     flake-utils,
     home-manager,
     nix-darwin,
-    pkg-mergiraf,
     ...
   }:
     {
@@ -60,7 +54,7 @@
       };
       overlays = [
         (final: prev: {
-          mergiraf = pkg-mergiraf.packages.${system}.mergiraf;
+
         })
       ];
       pkgs = import nixpkgs {
@@ -186,6 +180,10 @@
       legacyPackages.darwinConfigurations = {
         Maeve = nix-darwin.lib.darwinSystem {
           modules = [./nix-darwin/host/maeve.nix];
+          specialArgs = {inherit unstable;};
+        };
+        Clementine = nix-darwin.lib.darwinSystem {
+          modules = [./nix-darwin/host/clementine.nix];
           specialArgs = {inherit unstable;};
         };
       };
