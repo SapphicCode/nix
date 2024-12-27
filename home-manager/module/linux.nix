@@ -1,4 +1,8 @@
-{pkgs, stable, ...}: {
+{
+  pkgs,
+  stable,
+  ...
+}: {
   systemd.user.services.yubikey-agent = {
     Unit.Description = "yubikey-agent SSH agent";
     Service = {
