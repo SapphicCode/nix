@@ -37,6 +37,7 @@ with pkgs;
 
     # other programming language tooling
     stylua
+    pre-commit
   ]
   ++ (
     if pkgs.stdenv.isLinux
