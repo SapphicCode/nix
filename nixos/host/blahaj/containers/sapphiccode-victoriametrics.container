@@ -7,6 +7,7 @@ After=tailscaled.service
 Image=docker.io/victoriametrics/victoria-metrics:stable
 Volume=sapphiccode_victoriametrics:/victoria-metrics-data:rw,U
 PublishPort=100.67.28.115:8428:8428/tcp
+Network=sapphiccode.network
 Exec=-retentionPeriod=100y
 
 [Service]
