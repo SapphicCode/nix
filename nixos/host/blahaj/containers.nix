@@ -5,7 +5,6 @@
 
     # Web services
     "containers/systemd/sapphiccode-cloudflare.container".source = ./containers/sapphiccode-cloudflare.container;
-    "containers/systemd/sapphiccode-forgejo.container".source = ./containers/sapphiccode-forgejo.container;
     "containers/systemd/sapphiccode-uptimekuma.container".source = ./containers/sapphiccode-uptimekuma.container;
     "containers/systemd/sapphiccode-pufferpanel.container".source = ./containers/sapphiccode-pufferpanel.container;
     "containers/systemd/sapphiccode-archivebox.container".source = ./containers/sapphiccode-archivebox.container;
