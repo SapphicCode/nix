@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/446b013ec787228fe8d8ae04c76788812b54ec13";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/4b8dce39995a55af3d703b08bcc372c6537a2540";
 
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -56,6 +56,18 @@
         (final: prev: {
           numbat = prev.numbat.overrideAttrs (self: {
             meta = self.meta // {broken = false;};
+          });
+          beets = prev.beets.overrideAttrs (self: {
+            patches =
+              (self.patches or [])
+              ++ [
+                # use relative paths to music in database:
+                # https://github.com/beetbox/beets/issues/133#issuecomment-1953558839
+                (prev.fetchpatch {
+                  url = "https://github.com/artemist/beets/commit/a53fe00fe6026caf223d905960891cda60251ce9.patch";
+                  hash = "sha256-6whmjHmCeIxrzTgc1JhHT0GNaBoQT5B9Fi2j5st7XgY=";
+                })
+              ];
           });
         })
       ];
