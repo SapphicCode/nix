@@ -36,8 +36,10 @@ with pkgs;
     go
 
     # other programming language tooling
+    uv
     stylua
     pre-commit
+    earthly
   ]
   ++ (
     if pkgs.stdenv.isLinux
