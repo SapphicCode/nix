@@ -162,6 +162,7 @@
             ./nixos/host/blahaj/containers.nix
             ./nixos/module/boot/systemd-boot.nix
             ./nixos/profile/server_${system}.nix
+            ./nixos/module/k3s.nix
             ./nixos/module/user/hex.nix
             ./nixos/module/user/chaos.nix
             ({...}: {
@@ -175,9 +176,12 @@
               programs.nix-ld.enable = true;
 
               services.k3s = {
-                enable = true;
                 role = "server";
-                extraFlags = "--tls-san=blahaj.sapphiccode.net --tls-san=blahaj-ng.atlas-ide.ts.net --disable=traefik";
+                extraFlags = [
+                  "--tls-san=blahaj.sapphiccode.net"
+                  "--tls-san=blahaj-ng.atlas-ide.ts.net"
+                  "--disable=traefik"
+                ];
               };
 
               networking.firewall.allowedTCPPortRanges = [
