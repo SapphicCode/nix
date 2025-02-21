@@ -20,6 +20,7 @@ with pkgs;
 
     # editing
     micro
+    helix
   ]
   ++ (
     if pkgs.stdenv.isLinux
