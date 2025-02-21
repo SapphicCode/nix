@@ -101,6 +101,11 @@
           extraSpecialArgs = {stable = pkgs;};
           modules = [./home-manager/host/pandora.nix];
         };
+        "Pandora" = home-manager.lib.homeManagerConfiguration {
+          pkgs = unstable;
+          extraSpecialArgs = {stable = pkgs;};
+          modules = [./home-manager/host/pandora_wsl.nix];
+        };
         "hollydeck" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable;
           extraSpecialArgs = {stable = pkgs;};
