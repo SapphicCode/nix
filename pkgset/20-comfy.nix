@@ -38,4 +38,8 @@ with pkgs; [
   devbox
   pueue
   numbat
+
+  # programming language bootstrappers
+  uv
+  rustup
 ]
