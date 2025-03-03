@@ -1,13 +1,9 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./containers.nix
     ../../module/boot/systemd-boot.nix
-    ../../profile/server_${lib.system}.nix
+    ../../profile/server_${pkgs.system}.nix
     ../../module/k3s.nix
     ../../module/user/hex.nix
     ../../module/user/chaos.nix
