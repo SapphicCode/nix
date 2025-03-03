@@ -162,41 +162,7 @@
         "blahaj" = nixpkgs.lib.nixosSystem {
           inherit system pkgs;
           specialArgs = {inherit unstable;};
-          modules = [
-            ./nixos/host/blahaj/hardware-configuration.nix
-            ./nixos/host/blahaj/containers.nix
-            ./nixos/module/boot/systemd-boot.nix
-            ./nixos/profile/server_${system}.nix
-            ./nixos/module/k3s.nix
-            ./nixos/module/user/hex.nix
-            ./nixos/module/user/chaos.nix
-            ({...}: {
-              networking.hostName = "blahaj";
-              networking.hostId = "ef32a18b";
-              services.qemuGuest.enable = true;
-
-              users.users.sapphiccode.linger = true;
-              users.users.hex.linger = true;
-
-              programs.nix-ld.enable = true;
-
-              services.k3s = {
-                role = "server";
-                extraFlags = [
-                  "--tls-san=blahaj.sapphiccode.net"
-                  "--tls-san=blahaj-ng.atlas-ide.ts.net"
-                  "--disable=traefik"
-                ];
-              };
-
-              networking.firewall.allowedTCPPortRanges = [
-                {
-                  from = 15080;
-                  to = 15100;
-                }
-              ];
-            })
-          ];
+          modules = [./nixos/host/blahaj];
         };
       };
 
