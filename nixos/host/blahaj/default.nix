@@ -3,7 +3,7 @@
     ./hardware-configuration.nix
     ./containers.nix
     ../../module/boot/systemd-boot.nix
-    ../../profile/server_${pkgs.system}.nix
+    ../../profile/server_x86_64-linux.nix
     ../../module/k3s.nix
     ../../module/user/hex.nix
     ../../module/user/chaos.nix
