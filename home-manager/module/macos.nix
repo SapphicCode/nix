@@ -4,7 +4,6 @@
   config,
   ...
 }: {
-  services.gpg-agent.enable = true;
   launchd.agents = {
     yubikey-agent = {
       enable = true;
