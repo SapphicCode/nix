@@ -164,6 +164,11 @@
           specialArgs = {inherit unstable;};
           modules = [./nixos/host/blahaj];
         };
+        "eule" = nixpkgs.lib.nixosSystem {
+          inherit system pkgs;
+          specialArgs = {inherit unstable;};
+          modules = [./nixos/host/eule.nix];
+        };
       };
 
       legacyPackages.darwinConfigurations = {
