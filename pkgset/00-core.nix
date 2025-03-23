@@ -2,6 +2,7 @@
 with pkgs;
   [
     # utility
+    zsh
     curl
     pv
     gptfdisk
