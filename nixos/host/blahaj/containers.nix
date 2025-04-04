@@ -7,7 +7,7 @@
     "containers/systemd/sapphiccode-cloudflare.container".source = ./containers/sapphiccode-cloudflare.container;
     "containers/systemd/sapphiccode-uptimekuma.container".source = ./containers/sapphiccode-uptimekuma.container;
     "containers/systemd/sapphiccode-pufferpanel.container".source = ./containers/sapphiccode-pufferpanel.container;
-    "containers/systemd/sapphiccode-archivebox.container".source = ./containers/sapphiccode-archivebox.container;
+    # "containers/systemd/sapphiccode-archivebox.container".source = ./containers/sapphiccode-archivebox.container;
     "containers/systemd/sapphiccode-bookstack.container".source = ./containers/sapphiccode-bookstack.container;
     "containers/systemd/sapphiccode-nextcloud.container".source = ./containers/sapphiccode-nextcloud.container;
     "containers/systemd/sapphiccode-attic.container".source = ./containers/sapphiccode-attic.container;
