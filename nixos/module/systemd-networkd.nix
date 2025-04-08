@@ -2,7 +2,7 @@
   networking.useDHCP = false;
   networking.dhcpcd.enable = false;
 
-  systemd.resolved.enable = true;
+  services.resolved.enable = true;
   systemd.network = {
     enable = true;
 
