@@ -10,7 +10,7 @@
   nixpkgs.overlays = [
     # of the two ways to achieve this, this is definitely the less obnoxious one
     # (the other is .overrideAttrs and messing with hooks... let's not.)
-    (self: super: {
+    (_self: super: {
       python310NoAliases = pkgs.buildEnv {
         name = "python-3.10-no-aliases";
         paths = [super.python310];

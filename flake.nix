@@ -42,7 +42,7 @@
       };
 
       overlays = {
-        thorium-browser = final: prev: {
+        thorium-browser = final: _prev: {
           thorium-browser = final.callPackage ./packages/thorium-browser.nix {};
         };
       };
@@ -53,7 +53,7 @@
         permittedInsecurePackages = ["electron-25.9.0"]; # obsidian
       };
       overlays = [
-        (final: prev: {
+        (_final: prev: {
           numbat = prev.numbat.overrideAttrs (self: {
             meta = self.meta // {broken = false;};
           });

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   users.users.chaos = {
     isNormalUser = true;
     uid = 1666;

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  unstable,
-  ...
-}: {
+{pkgs, ...}: {
   # Hardware > Power
   boot.kernelParams = [
     "amd_pstate=active"

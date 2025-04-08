@@ -1,7 +1,4 @@
-{
-  pkgs,
-  fallback ? pkgs,
-}:
+{pkgs}:
 with pkgs; [
   nushell # crazy powerful shell
 
