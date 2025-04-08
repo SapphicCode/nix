@@ -13,4 +13,9 @@
   networking.hostId = "1e17b561";
 
   virtualisation.podman.enable = false;
+
+  virtualisation.incus = {
+    enable = true;
+    ui.enable = true;
+  };
 }
