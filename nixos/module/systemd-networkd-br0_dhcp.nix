@@ -1,5 +1,5 @@
 {...}: {
-  systemd.networkd = {
+  systemd.network = {
     netdevs."10-br0".netdevConfig = {
       Name = "br0";
       Kind = "bridge";
