@@ -14,9 +14,6 @@
     ../module/printing.nix
   ];
   # Hardware > Boot
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   boot.initrd.systemd.enable = true;
 
   # Kernel > Memory deadlocks

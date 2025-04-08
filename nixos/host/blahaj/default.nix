@@ -2,7 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ./containers.nix
-    ../../module/boot/systemd-boot.nix
+    ../../module/systemd-boot.nix
     ../../profile/server_x86_64-linux.nix
     ../../module/k3s.nix
     ../../module/user/hex.nix

@@ -14,6 +14,9 @@
     ../module/packages.nix
   ];
 
+  # Hardware > Boot
+  boot.initrd.systemd.enable = true;
+
   # Hardware > Memory
   zramSwap.enable = true;
   systemd.oomd = {

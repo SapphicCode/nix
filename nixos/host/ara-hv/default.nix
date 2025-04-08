@@ -2,11 +2,14 @@
   imports = [
     ./hardware-configuration.nix
     ../../profile/server.nix
+    ../../module/systemd-boot.nix
     ../../module/systemd-networkd.nix
   ];
+
+  boot.initrd.luks.devices."luks-root".device = "/dev/nvme0n1p2";
 
   networking.hostName = "ara-hv";
   networking.hostId = "1e17b561";
 
-  system.stateVersion = "24.11";
+  virtualisation.podman.enable = false;
 }
