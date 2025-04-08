@@ -4,6 +4,7 @@
     ../../profile/server.nix
     ../../module/systemd-boot.nix
     ../../module/systemd-networkd.nix
+    ../../module/systemd-networkd-br0_dhcp.nix
   ];
 
   boot.initrd.luks.devices."luks-root".device = "/dev/nvme0n1p2";
