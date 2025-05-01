@@ -11,22 +11,15 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "thunderbolt"];
+  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "thunderbolt" "uas" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
 
-  boot.initrd.luks.devices = {
-    "luks-system".device = "/dev/disk/by-uuid/33c3110f-9153-4fdf-abc5-591615b707a7";
-  };
+  boot.initrd.luks.devices.luks-root.device = "/dev/disk/by-uuid/d5452fe0-d477-4688-8e33-096ddca6756b";
 
   fileSystems."/" = {
     device = "pandora/root";
-    fsType = "zfs";
-  };
-
-  fileSystems."/nix/store" = {
-    device = "pandora/nix-store";
     fsType = "zfs";
   };
 
@@ -35,8 +28,18 @@
     fsType = "zfs";
   };
 
+  fileSystems."/nix/store" = {
+    device = "pandora/nix-store";
+    fsType = "zfs";
+  };
+
+  fileSystems."/var/lib" = {
+    device = "pandora/var-lib";
+    fsType = "zfs";
+  };
+
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/2F27-9CEC";
+    device = "/dev/disk/by-uuid/3844-89B0";
     fsType = "vfat";
     options = ["fmask=0022" "dmask=0022"];
   };
@@ -48,7 +51,6 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.tailscale0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
