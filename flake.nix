@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/6da47adcb58c5b595d7b8791d2dda974b34f0be2";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/e6195526502d0bee9b4e1c1082a54fd737845699";
 
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -36,13 +36,13 @@
         openssh = ./nixos/module/openssh.nix;
         tailscale = ./nixos/module/tailscale.nix;
         printing = ./nixos/module/printing.nix;
-        user_automata = ./nixos/module/user/automata.nix;
+        user_automata = ./nixos/users/user/automata.nix;
         profile_server = ./nixos/profile/server.nix;
         profile_desktop = ./nixos/profile/desktop.nix;
       };
 
       overlays = {
-        thorium-browser = final: _prev: {
+        thorium-browser = final: prev: {
           thorium-browser = final.callPackage ./packages/thorium-browser.nix {};
         };
       };
@@ -53,7 +53,7 @@
         permittedInsecurePackages = ["electron-25.9.0"]; # obsidian
       };
       overlays = [
-        (_final: prev: {
+        (final: prev: {
           numbat = prev.numbat.overrideAttrs (self: {
             meta = self.meta // {broken = false;};
           });
@@ -150,12 +150,16 @@
           modules = [
             ./nixos/host/pandora/hardware-configuration.nix
             ./nixos/profile/desktop_${system}.nix
-            ./nixos/module/plasma6.nix
+            ./nixos/module/systemd-boot.nix
+            ./nixos/module/gnome.nix
+            ./nixos/module/niri.nix
             ./nixos/module/framework-13.nix
             ({config, ...}: {
               networking.hostName = "pandora";
               networking.hostId = "94ad2a33";
-              boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+
+              boot.kernelPackages = pkgs.linuxPackages_6_12;
+              boot.zfs.package = pkgs.zfs_2_3;
             })
           ];
         };

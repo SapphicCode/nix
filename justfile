@@ -12,7 +12,7 @@ pre-commit: fmt
 fmt:
     nix run nixpkgs#alejandra -- .
 
-update OFFSET='3day': _pull
+_update OFFSET='1wk': _pull
     #!/usr/bin/env nu
 
     # bump nixpkgs-unstable
@@ -20,11 +20,12 @@ update OFFSET='3day': _pull
     let query = {until: $offset, sha: "master", per_page: 1, page: 1}
     let hash = http get $"https://api.github.com/repos/nixos/nixpkgs/commits?($query | url build-query)" | first | get sha
     sed -i $'s!nixpkgs-unstable.url =.*!nixpkgs-unstable.url = "github:nixos/nixpkgs/($hash)";!' flake.nix
-    git add flake.nix
 
+update: _pull _update
     # update the flake
     nix flake update
-    git add flake.lock
+    git restore --staged . || true
+    git add flake.nix flake.lock
 
     # commit our update
     git commit -m "flake: update inputs"

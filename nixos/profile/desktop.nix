@@ -12,6 +12,7 @@
     ../module/openssh.nix
     ../module/podman-user-quadlet.nix
     ../module/printing.nix
+    ../module/distbuild-blahaj.nix
   ];
   # Hardware > Boot
   boot.initrd.systemd.enable = true;
@@ -40,7 +41,6 @@
   hardware.keyboard.qmk.enable = true;
 
   # Hardware > Audio
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -78,7 +78,6 @@
   environment.systemPackages = with pkgs;
     [
       # web:
-      floorp
       chromium
 
       # chat:
@@ -89,7 +88,7 @@
       obsidian
       vscode
       unstable.zed-editor
-      #libreoffice-fresh
+      libreoffice-fresh
 
       # media:
       strawberry
@@ -105,11 +104,13 @@
       unstable.qFlipper
 
       # utility:
-      gnome.simple-scan
+      simple-scan
       krename
       easyeffects
       mkvtoolnix
       wezterm
+      ghostty
+      gitFull
 
       # sway:
       # rofi-wayland
@@ -125,6 +126,8 @@
       fira-code-nerdfont
     ]
     ++ import ../../pkgset/99-fonts.nix {inherit pkgs;};
+
+  programs.firefox.enable = true;
 
   # Escape hatch
   services.flatpak.enable = true;
