@@ -9,6 +9,5 @@
 
   home.packages = import ../../pkgset/20-comfy.nix {
     inherit pkgs;
-    fallback = stable;
   };
 }

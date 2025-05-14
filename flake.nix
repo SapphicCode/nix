@@ -86,6 +86,7 @@
       formatter = pkgs.alejandra;
 
       legacyPackages.homeConfigurations = {
+        # macOS
         "Maeve" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable;
           extraSpecialArgs = {stable = pkgs;};
@@ -96,6 +97,13 @@
           extraSpecialArgs = {stable = pkgs;};
           modules = [./home-manager/host/Clementine.nix];
         };
+        "butler" = home-manager.lib.homeManagerConfiguration {
+          pkgs = unstable;
+          extraSpecialArgs = {stable = pkgs;};
+          modules = [./home-manager/host/butler.nix];
+        };
+
+        # linux
         "pandora" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable;
           extraSpecialArgs = {stable = pkgs;};

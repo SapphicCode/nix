@@ -4,9 +4,16 @@
   config,
   ...
 }: {
+  home.packages = with pkgs;
+    if config.launchd.agents.yubikey-agent.enable
+    then [yubikey-agent]
+    else
+      []
+      ++ import ../../pkgset/99-fonts.nix {inherit pkgs;}
+      ++ import ../../pkgset/99-macos.nix {inherit pkgs;};
   launchd.agents = {
     yubikey-agent = {
-      enable = true;
+      enable = lib.mkDefault true;
       config = {
         ProgramArguments = ["${pkgs.yubikey-agent}/bin/yubikey-agent" "-l" "${config.home.homeDirectory}/Library/Caches/yubikey-agent.sock"];
         KeepAlive = {
@@ -16,7 +23,7 @@
       };
     };
     pueue = {
-      enable = true;
+      enable = lib.mkDefault true;
       config = {
         ProgramArguments = ["${pkgs.pueue}/bin/pueued"];
         EnvironmentVariables = {
