@@ -16,6 +16,7 @@ with pkgs;
     jujutsu
     taskwarrior3
     taskwarrior-tui
+    timewarrior
     yubikey-manager
 
     # transcoding / image manipulation
