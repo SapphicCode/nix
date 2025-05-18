@@ -1,0 +1,94 @@
+resources:
+  - name: universe
+    icon: git
+    type: git
+    source:
+      uri: https://git.sapphiccode.net/SapphicCode/universe.git
+      branch: main
+      username: ((automata-forgejo.username))
+      password: ((automata-forgejo.password))
+
+  - name: weekly
+    icon: clock
+    type: time
+    source:
+      days: [Saturday]
+      start: 03:00
+      stop: 03:00
+      location: Europe/Amsterdam
+      initial_version: true
+
+jobs:
+  - name: update-flake
+    serial: true
+    plan:
+      - get: weekly
+        trigger: true
+      - get: universe
+      - task: update-flake
+        config:
+          platform: linux
+          image_resource:
+            type: registry-image
+            source:
+              repository: quay.io/sapphiccode/fedora-with-lix
+          inputs:
+            - name: universe
+              path: .
+          outputs:
+            - name: universe
+              path: .
+          run:
+            path: bash
+            args:
+              - -lc
+              - |
+                . /nix/var/nix/profiles/per-user/root/profile/etc/profile.d/nix.sh
+
+                set -euxo pipefail
+
+                nix run nixpkgs#git -- config --global user.name "automata"
+                nix run nixpkgs#git -- config --global user.email "automata@sapphiccode.net"
+
+                nix shell nixpkgs#nushell nixpkgs#just nixpkgs#git --command just update
+      - put: universe
+        params:
+          repository: universe
+
+  - name: deploy-nixos
+    serial: true
+    plan:
+      - get: universe
+        trigger: true
+      - across:
+          - var: host
+            values:
+              - "100.67.28.115" # blahaj
+        do:
+          - task: deploy
+            config:
+              platform: linux
+              image_resource:
+                type: registry-image
+                source:
+                  repository: ghcr.io/sapphiccode/containers/alpine-cicd
+              params:
+                SSH_PRIVATE_KEY: ((automata-ssh))
+                HOST: ((.:host))
+              inputs:
+                - name: universe
+                  path: .
+              run:
+                path: bash
+                args:
+                  - -c
+                  - |
+                    set -euo pipefail
+
+                    mkdir -p ~/.ssh
+                    echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_ed25519
+                    chmod 600 ~/.ssh/id_ed25519
+
+                    set -x
+                    GIT_REV=$(git rev-parse HEAD)
+                    ssh -o "StrictHostKeyChecking no" "automata@${HOST}" sudo nixos-rebuild switch --flake "git+https://git.sapphiccode.net/SapphicCode/universe.git?rev=${GIT_REV}"
