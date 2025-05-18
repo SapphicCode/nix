@@ -1,4 +1,4 @@
-hostname := `if [ "$(uname)" = "Darwin" ]; then cat ~/.hostname 2> /dev/null || scutil --get ComputerName; else hostname -s || true; fi`
+hostname := `if [ "$(uname)" = "Darwin" ]; then cat ~/.hostname 2> /dev/null || scutil --get ComputerName; else cat /proc/sys/kernel/hostname; fi`
 
 _default:
     just --list
