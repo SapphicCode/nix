@@ -35,6 +35,7 @@ with pkgs; [
   devbox
   pueue
   numbat
+  hl-log-viewer
 
   # programming language bootstrappers
   uv
