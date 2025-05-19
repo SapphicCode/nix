@@ -3,6 +3,10 @@
   home.homeDirectory = "/Users/beelen";
   home.stateVersion = "23.05";
 
+  home.packages = with pkgs; [
+    sshpass
+  ];
+
   services.syncthing.enable = true;
   launchd.agents.yubikey-agent.enable = false;
 
