@@ -27,6 +27,9 @@ with pkgs;
 
     # cloud utils
     # awscli2 # (broken)
+    kubectl
+    kubectx
+    k9s
 
     # programming languages in global context
     python312
