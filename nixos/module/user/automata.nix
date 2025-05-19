@@ -24,4 +24,5 @@
       commands = ["NOPASSWD:ALL"];
     }
   ];
+  nix.settings.trusted-users = ["automata"];
 }
