@@ -9,6 +9,7 @@
     group = "wheel";
     description = "CI system user";
     shell = pkgs.bash;
+    createHome = true;
     packages = with pkgs; [
       git
       unstable.home-manager
