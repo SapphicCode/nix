@@ -5,6 +5,7 @@
 
   home.packages = with pkgs; [
     sshpass
+    vault
   ];
 
   services.syncthing.enable = true;
