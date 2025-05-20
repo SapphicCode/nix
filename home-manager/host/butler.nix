@@ -5,7 +5,7 @@
 
   home.packages = with pkgs; [
     sshpass
-    vault
+    openbao
   ];
 
   services.syncthing.enable = true;
