@@ -30,6 +30,7 @@ with pkgs;
     kubectl
     kubectx
     k9s
+    kubernetes-helm
 
     # programming languages in global context
     python312
