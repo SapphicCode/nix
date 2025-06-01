@@ -9,6 +9,6 @@
     ];
   };
   programs.fish.enable = true;
-  nix.settings.trustedUsers = ["aurelia"];
+  nix.settings.trusted-users = ["aurelia"];
   programs._1password-gui.polkitPolicyOwners = ["aurelia"];
 }
