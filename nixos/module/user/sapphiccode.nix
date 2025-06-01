@@ -6,5 +6,6 @@
     shell = pkgs.bash;
   };
   programs.fish.enable = true;
+  nix.settings.trustedUsers = ["sapphiccode"];
   programs._1password-gui.polkitPolicyOwners = ["sapphiccode"];
 }
