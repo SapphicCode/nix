@@ -3,7 +3,7 @@
     isNormalUser = true;
     description = "Cassandra";
     extraGroups = ["wheel" "networkmanager" "input" "lp" "scanner" "dialout" "video" "incus-admin"];
-    shell = pkgs.bash;
+    shell = pkgs.bashInteractive;
   };
   programs.fish.enable = true;
   nix.settings.trustedUsers = ["sapphiccode"];
