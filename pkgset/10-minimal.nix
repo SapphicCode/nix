@@ -18,6 +18,7 @@ with pkgs; [
   # tools
   lsof
   eza
+  bat
   age
   age-plugin-yubikey
   rclone
