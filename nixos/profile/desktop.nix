@@ -12,7 +12,7 @@
     ../module/openssh.nix
     ../module/podman-user-quadlet.nix
     ../module/printing.nix
-    ../module/distbuild-blahaj.nix
+    # ../module/distbuild-blahaj.nix
   ];
   # Hardware > Boot
   boot.initrd.systemd.enable = true;
@@ -41,7 +41,7 @@
   hardware.keyboard.qmk.enable = true;
 
   # Hardware > Audio
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -95,7 +95,7 @@
       haruna
       mpv
       obs-studio
-      kdenlive
+      kdePackages.kdenlive
 
       # fun:
       prismlauncher
@@ -120,12 +120,9 @@
       # brightnessctl
       # playerctl
       # wezterm
-
-      # fonts:
-      fira-code
-      fira-code-nerdfont
     ]
-    ++ import ../../pkgset/99-fonts.nix {inherit pkgs;};
+    ++ import ../../pkgset/20-comfy.nix {inherit pkgs;};
+  fonts.packages = import ../../pkgset/99-fonts.nix {inherit pkgs;};
 
   programs.firefox.enable = true;
 

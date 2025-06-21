@@ -5,8 +5,9 @@ with pkgs; [
   merriweather
 
   fira-code
-  fira-code-nerdfont
-  iosevka
-  iosevka-comfy.comfy
+  nerd-fonts.fira-code
+  iosevka-bin
+  (iosevka-bin.override {variant = "SS05";})
+  nerd-fonts.iosevka
   departure-mono
 ]
