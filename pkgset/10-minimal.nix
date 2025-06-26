@@ -24,6 +24,7 @@ with pkgs; [
   rclone
   mkpasswd
   pwgen
+  ldns # -> drill
 
   # dev tools
   alejandra
