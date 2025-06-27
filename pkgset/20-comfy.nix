@@ -36,6 +36,7 @@ with pkgs; [
   pueue
   numbat
   hl-log-viewer
+  nix-output-monitor
 
   # programming language bootstrappers
   uv

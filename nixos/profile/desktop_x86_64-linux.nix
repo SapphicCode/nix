@@ -9,8 +9,8 @@
 
     # fun:
     sunvox
-    lutris
-    wine
+    protonplus
+    (bottles.override {removeWarningPopup = true;})
   ];
   programs.steam = {
     enable = true;

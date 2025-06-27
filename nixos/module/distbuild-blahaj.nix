@@ -3,6 +3,7 @@
   nix.settings = {
     max-jobs = 0;
     builders-use-substitutes = true;
+    require-sigs = false;
   };
   nix.buildMachines = [
     {
