@@ -5,6 +5,7 @@
 }: {
   nixpkgs.config.allowUnfree = true;
   home.packages = import ../../pkgset/00-core.nix {inherit pkgs;} ++ import ../../pkgset/10-minimal.nix {inherit pkgs;};
+  nix.package = pkgs.lix;
 
   programs.home-manager.enable = true;
   programs.direnv.nix-direnv.enable = true;

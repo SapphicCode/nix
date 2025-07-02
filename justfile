@@ -12,14 +12,17 @@ pre-commit: fmt
 fmt:
     nix run nixpkgs#alejandra -- .
 
-_update OFFSET='1wk': _pull
+_nixpkgs_hash OFFSET='1wk':
     #!/usr/bin/env nu
 
     # bump nixpkgs-unstable
     let offset = (date now) - {{OFFSET}}
     let query = {until: $offset, sha: "master", per_page: 1, page: 1}
     let hash = http get $"https://api.github.com/repos/nixos/nixpkgs/commits?($query | url build-query)" | first | get sha
-    sed -i $'s!nixpkgs-unstable.url =.*!nixpkgs-unstable.url = "github:nixos/nixpkgs/($hash)";!' flake.nix
+    print $hash
+
+_update: _pull
+    hash=$(just _nixpkgs_hash) sed -i "s!nixpkgs-unstable.url =.*!nixpkgs-unstable.url = \"github:nixos/nixpkgs/${hash}\";!" flake.nix
 
 update: _pull _update
     # update the flake
