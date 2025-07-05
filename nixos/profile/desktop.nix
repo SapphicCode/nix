@@ -131,7 +131,7 @@
   xdg.portal.enable = true;
 
   # Program hooks
-  nix.package = unstable.lix;
+  nix.package = unstable.lixPackageSets.latest.lix;
   nix.settings.experimental-features = ["nix-command" "flakes"];
   programs.ccache.enable = true;
   nix.settings.extra-sandbox-paths = [config.programs.ccache.cacheDir];

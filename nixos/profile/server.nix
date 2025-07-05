@@ -42,7 +42,7 @@
   };
 
   # Software > Everyday
-  nix.package = unstable.lix;
+  nix.package = unstable.lixPackageSets.latest.lix;
   nix.settings.experimental-features = ["nix-command" "flakes"];
   environment.systemPackages = with pkgs; [];
   programs.gnupg.agent.enable = true;

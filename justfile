@@ -40,7 +40,10 @@ switch-nixos: _pull
     sudo nixos-rebuild switch --flake '.#{{hostname}}'
 
 switch-darwin: _pull
-    nix run nix-darwin -- switch --flake '.#{{hostname}}'
+    nix run nix-darwin -- build --flake '.#{{hostname}}'
+    ls -l result/sw/bin/nix
+    echo 'Waiting for Full Disk Access...' && read
+    sudo result/activate
 
 switch:
     #!/usr/bin/env bash
