@@ -92,3 +92,4 @@ jobs:
                     set -x
                     GIT_REV=$(git rev-parse HEAD)
                     ssh -o "StrictHostKeyChecking no" "automata@${HOST}" sudo nixos-rebuild boot --flake "git+https://git.sapphiccode.net/SapphicCode/universe.git?rev=${GIT_REV}"
+                    ssh -o "StrictHostKeyChecking no" "automata@${HOST}" sudo -u sapphiccode home-manager switch --flake "git+https://git.sapphiccode.net/SapphicCode/universe.git?rev=${GIT_REV}"'#$(hostname -s)'
