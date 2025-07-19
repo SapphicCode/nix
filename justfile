@@ -22,7 +22,10 @@ _nixpkgs_hash OFFSET='1wk':
     print $hash
 
 _update: _pull
-    hash=$(just _nixpkgs_hash) sed -i "s!nixpkgs-unstable.url =.*!nixpkgs-unstable.url = \"github:nixos/nixpkgs/${hash}\";!" flake.nix
+    #!/usr/bin/env bash
+    set -euxo pipefail
+    hash=$(just _nixpkgs_hash)
+    sed -i "s!nixpkgs-unstable.url =.*!nixpkgs-unstable.url = \"github:nixos/nixpkgs/${hash}\";!" flake.nix
 
 update: _pull _update
     # update the flake
