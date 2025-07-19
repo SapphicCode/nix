@@ -50,7 +50,7 @@ jobs:
                 nix run nixpkgs#git -- config --global user.name "automata"
                 nix run nixpkgs#git -- config --global user.email "automata@sapphiccode.net"
 
-                nix shell nixpkgs#bash nixpkgs#sed nixpkgs#nushell nixpkgs#just nixpkgs#git --command just update
+                nix shell nixpkgs#bash nixpkgs#gnused nixpkgs#nushell nixpkgs#just nixpkgs#git --command just update
       - put: universe
         params:
           repository: universe
