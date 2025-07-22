@@ -33,12 +33,14 @@
       };
 
       nixosModules = {
-        openssh = ./nixos/module/openssh.nix;
-        tailscale = ./nixos/module/tailscale.nix;
-        printing = ./nixos/module/printing.nix;
+        user_sapphiccode = ./nixos/module/user/sapphiccode.nix;
         user_automata = ./nixos/module/user/automata.nix;
+
         profile_server = ./nixos/profile/server.nix;
+        profile_server_aarch64 = ./nixos/profile/server_aarch64.nix;
         profile_desktop = ./nixos/profile/desktop.nix;
+
+        inherit (import ./nixos/module) packages openssh tailscale printing restic podman k3s telegraf vector;
       };
 
       overlays = {
