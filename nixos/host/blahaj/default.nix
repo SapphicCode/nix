@@ -5,6 +5,11 @@
     ../../module/systemd-boot.nix
     ../../profile/server_x86_64-linux.nix
     ../../module/k3s.nix
+    ../../module/podman.nix
+    ../../module/podman-user-quadlet.nix
+    ../../module/restic.nix
+    ../../module/telegraf.nix
+    ../../module/vector.nix
     ../../module/user/hex.nix
     ../../module/user/chaos.nix
   ];
