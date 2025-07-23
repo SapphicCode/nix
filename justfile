@@ -17,7 +17,7 @@ _nixpkgs_hash OFFSET='1wk':
 
     # bump nixpkgs-unstable
     let offset = (date now) - {{OFFSET}}
-    let query = {until: $offset, sha: "master", per_page: 1, page: 1}
+    let query = {until: $offset, sha: "nixos-unstable", per_page: 1, page: 1}
     let hash = http get $"https://api.github.com/repos/nixos/nixpkgs/commits?($query | url build-query)" | first | get sha
     print $hash
 

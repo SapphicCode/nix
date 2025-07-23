@@ -5,12 +5,14 @@
   ...
 }: {
   home.packages = with pkgs;
-    if config.launchd.agents.yubikey-agent.enable
-    then [yubikey-agent]
-    else
-      []
-      ++ import ../../pkgset/99-fonts.nix {inherit pkgs;}
-      ++ import ../../pkgset/99-macos.nix {inherit pkgs;};
+    (
+      if config.launchd.agents.yubikey-agent.enable
+      then [yubikey-agent]
+      else []
+    )
+    ++ import ../../pkgset/99-fonts.nix {inherit pkgs;}
+    ++ import ../../pkgset/99-macos.nix {inherit pkgs;};
+
   launchd.agents = {
     yubikey-agent = {
       enable = lib.mkDefault true;
