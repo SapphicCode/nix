@@ -28,4 +28,5 @@ with pkgs; [
 
   # dev tools
   alejandra
+  nil
 ]

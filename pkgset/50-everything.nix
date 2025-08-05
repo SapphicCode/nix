@@ -29,8 +29,10 @@ with pkgs;
     # awscli2 # (broken)
     kubectl
     kubectx
+    kubeswitch
     k9s
     kubernetes-helm
+    kubeseal
 
     # programming languages in global context
     python312
