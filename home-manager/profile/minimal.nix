@@ -8,7 +8,10 @@
   nix.package = pkgs.lixPackageSets.latest.lix;
 
   programs.home-manager.enable = true;
-  programs.direnv.nix-direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   home.activation.chezmoi = lib.hm.dag.entryAfter ["installPackages"] ''
     PATH="${pkgs.coreutils}/bin:$HOME/.nix-profile/bin:$PATH"
