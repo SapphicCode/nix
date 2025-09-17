@@ -6,4 +6,6 @@ with pkgs; [
   gnugrep
   gnused
   uutils-coreutils-noprefix
+  less
+  watch
 ]

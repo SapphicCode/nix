@@ -1,4 +1,7 @@
-{pkgs}:
+{
+  pkgs,
+  withPython ? true,
+}:
 with pkgs;
   [
     # more shells!
@@ -35,8 +38,6 @@ with pkgs;
     kubeseal
 
     # programming languages in global context
-    python312
-    python312Packages.ipython
     go
 
     # other programming language tooling
@@ -47,5 +48,14 @@ with pkgs;
   ++ (
     if pkgs.stdenv.isLinux
     then with pkgs; [ffmpeg]
+    else []
+  )
+  ++ (
+    if withPython
+    then
+      with pkgs; [
+        python313
+        python313Packages.ipython
+      ]
     else []
   )

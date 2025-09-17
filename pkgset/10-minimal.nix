@@ -25,6 +25,8 @@ with pkgs; [
   mkpasswd
   pwgen
   ldns # -> drill
+  arping
+  nmap
 
   # dev tools
   alejandra
