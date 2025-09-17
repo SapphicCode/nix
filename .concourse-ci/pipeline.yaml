@@ -13,8 +13,8 @@ resources:
     type: time
     source:
       days: [Saturday]
-      start: 03:00
-      stop: 03:00
+      start: 03:00 AM
+      stop: 04:00 AM
       location: Europe/Amsterdam
       initial_version: true
 
