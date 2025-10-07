@@ -27,6 +27,7 @@ with pkgs; [
   # tools
   hyfetch
   restic
+  kopia
   gnupg
   fq
   just

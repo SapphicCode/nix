@@ -7,7 +7,7 @@
     ../../module/k3s.nix
     ../../module/podman.nix
     ../../module/podman-user-quadlet.nix
-    ../../module/restic.nix
+    ../../module/kopia.nix
     ../../module/telegraf.nix
     ../../module/vector.nix
     ../../module/user/hex.nix
