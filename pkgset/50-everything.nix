@@ -31,7 +31,6 @@ with pkgs;
     # cloud utils
     # awscli2 # (broken)
     kubectl
-    kubectx
     kubeswitch
     k9s
     kubernetes-helm
@@ -48,14 +47,5 @@ with pkgs;
   ++ (
     if pkgs.stdenv.isLinux
     then with pkgs; [ffmpeg]
-    else []
-  )
-  ++ (
-    if withPython
-    then
-      with pkgs; [
-        python313
-        python313Packages.ipython
-      ]
     else []
   )
