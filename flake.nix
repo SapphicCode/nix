@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/2c6f0af49ad6b01fd4446bd4a46cd4ba2e20ad55";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/8619190cc709019cfcd9d56e341d626e17768bbe";
 
     flake-utils.url = "github:numtide/flake-utils";
 
