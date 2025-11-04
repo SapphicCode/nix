@@ -1,7 +1,21 @@
-{unstable, ...}: {
-  nix.package = unstable.lixPackageSets.latest.lix;
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+{unstable, ...}: let
+  lix = unstable.lixPackageSets.latest.lix;
+in {
+  nixpkgs.hostPlatform = "aarch64-darwin";
+
+  nix = {
+    package = lix;
+    settings = {
+      experimental-features = ["nix-command" "flakes"];
+      trusted-users = ["sapphiccode"];
+    };
+  };
+
   environment.systemPackages = [
-    unstable.lixPackageSets.latest.lix
+    lix
   ];
+
+  services.nix-daemon.enable = true;
+
+  system.stateVersion = 6;
 }

@@ -48,5 +48,21 @@
         };
       };
     };
+    kopia = {
+      enable = lib.mkDefault true;
+      config = {
+        ProgramArguments = [
+          "${pkgs.kopia}/bin/kopia"
+          "snapshot"
+          "create"
+          "${config.home.homeDirectory}"
+        ];
+        ProcessType = "Background";
+        LowPriorityBackgroundIO = true;
+        StandardOutPath = "${config.home.homeDirectory}/Library/Logs/kopia.log";
+        StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/kopia.err";
+        StartInterval = 3600;
+      };
+    };
   };
 }
