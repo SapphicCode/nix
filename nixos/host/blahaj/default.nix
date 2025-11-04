@@ -12,6 +12,7 @@
     ../../module/vector.nix
     ../../module/user/hex.nix
     ../../module/user/chaos.nix
+    ../../module/incus.nix
   ];
 
   networking.hostName = "blahaj";
