@@ -4,7 +4,7 @@ Wants=tailscaled.service
 After=tailscaled.service
 
 [Container]
-Image=docker.io/victoriametrics/victoria-metrics:stable
+Image=docker.io/victoriametrics/victoria-metrics:latest
 Volume=sapphiccode_victoriametrics:/victoria-metrics-data:rw,U
 PublishPort=100.67.28.115:8428:8428/tcp
 Network=sapphiccode.network
