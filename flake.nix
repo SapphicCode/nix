@@ -176,6 +176,11 @@
           specialArgs = {inherit unstable;};
           modules = [./nixos/host/blahaj];
         };
+        "hyperhaj" = nixpkgs.lib.nixosSystem {
+          inherit system pkgs;
+          specialArgs = {inherit unstable;};
+          modules = [./nixos/host/hyperhaj];
+        };
         "ara-hv" = nixpkgs.lib.nixosSystem {
           inherit system pkgs;
           specialArgs = {inherit unstable;};
