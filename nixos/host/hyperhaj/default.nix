@@ -11,4 +11,5 @@
   networking.hostId = "ef6c5017";
   networking.firewall.enable = false;
   boot.kernelPackages = pkgs.linuxPackages_6_12;
+  services.openssh.ports = [2222];
 }
