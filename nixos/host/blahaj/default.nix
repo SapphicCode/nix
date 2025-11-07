@@ -1,10 +1,14 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  modulesPath,
+  ...
+}: {
   imports = [
-    ./hardware-configuration.nix
+    "${modulesPath}/virtualisation/lxc-container.nix"
+    #./hardware-configuration.nix
     ./containers.nix
-    ../../module/systemd-boot.nix
+    #../../module/systemd-boot.nix
     ../../profile/server_x86_64-linux.nix
-    ../../module/k3s.nix
     ../../module/podman.nix
     ../../module/podman-user-quadlet.nix
     ../../module/kopia.nix
@@ -12,26 +16,18 @@
     ../../module/vector.nix
     ../../module/user/hex.nix
     ../../module/user/chaos.nix
-    ../../module/incus.nix
   ];
 
   networking.hostName = "blahaj";
   networking.hostId = "ef32a18b";
-  services.qemuGuest.enable = true;
+  #services.qemuGuest.enable = true;
+  services.resolved.enable = false;
+  nix.settings.sandbox = false;
 
   users.users.sapphiccode.linger = true;
   users.users.hex.linger = true;
 
   programs.nix-ld.enable = true;
-
-  services.k3s = {
-    role = "server";
-    extraFlags = [
-      "--tls-san=blahaj.sapphiccode.net"
-      "--tls-san=blahaj-ng.atlas-ide.ts.net"
-      "--disable=traefik"
-    ];
-  };
 
   users.users.remote-build = {
     isSystemUser = true;
@@ -42,10 +38,5 @@
     ];
   };
 
-  networking.firewall.allowedTCPPortRanges = [
-    {
-      from = 15080;
-      to = 15100;
-    }
-  ];
+  networking.firewall.enable = false;
 }
