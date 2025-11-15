@@ -35,6 +35,12 @@
           oifname "en*" masquerade
           oifname "incusbr*" ct status dnat masquerade
         }
+        chain output {
+          type nat hook output priority -100; policy accept;
+
+          # enable host to access services in k8s via public IP
+          ip daddr 37.27.111.226 tcp dport { 80, 443 } dnat to 10.75.1.60
+        }
       }
 
       table ip filter {
