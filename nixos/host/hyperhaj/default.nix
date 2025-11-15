@@ -30,6 +30,11 @@
           ip daddr 37.27.111.226 tcp dport 80 dnat ip to 10.75.1.60:80
           ip daddr 37.27.111.226 tcp dport 443 dnat ip to 10.75.1.60:443
         }
+        chain POSTROUTING {
+          type nat hook postrouting priority srcnat; policy accept;
+          oifname "en*" masquerade
+          oifname "incusbr*" ct status dnat masquerade
+        }
       }
     '';
   };
@@ -62,9 +67,13 @@
       After = ["zfs-key-hyperhaj-incus.service"];
     };
 
-    services.incus.unitConfig = {
-      Requires = ["zfs-key-hyperhaj-incus.target"];
-      After = ["zfs-key-hyperhaj-incus.target"];
+    services.incus = {
+      unitConfig = {
+        Requires = ["zfs-key-hyperhaj-incus.target"];
+        After = ["zfs-key-hyperhaj-incus.target"];
+      };
+      # restart incus on system updates (won't restart VMs but will fix networking)
+      restartTriggers = [config.system.build.toplevel];
     };
   };
 }
