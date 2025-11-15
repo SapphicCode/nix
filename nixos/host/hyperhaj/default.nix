@@ -19,7 +19,7 @@
   # unblock port 22
   services.openssh.ports = [2222];
 
-  # do NAT
+  # do NAT & firewalling
   networking.nftables = {
     enable = true;
     ruleset = ''
@@ -34,6 +34,20 @@
           type nat hook postrouting priority srcnat; policy accept;
           oifname "en*" masquerade
           oifname "incusbr*" ct status dnat masquerade
+        }
+      }
+
+      table ip filter {
+        chain forward {
+          type filter hook forward priority filter; policy accept;
+
+          # filter private ranges so Hetzner's security team doesn't go nuclear on us
+          oifname "en*" ip daddr {
+            10.0.0.0/8,
+            172.16.0.0/12,
+            192.168.0.0/16,
+            100.64.0.0/10
+          } counter drop
         }
       }
     '';
@@ -72,8 +86,8 @@
         Requires = ["zfs-key-hyperhaj-incus.target"];
         After = ["zfs-key-hyperhaj-incus.target"];
       };
-      # restart incus on system updates (won't restart VMs but will fix networking)
-      restartTriggers = [config.system.build.toplevel];
+      restartTriggers = [config.networking.nftables.ruleset];
+      stopIfChanged = false; # otherwise VMs will reboot
     };
   };
 }
