@@ -31,6 +31,7 @@ with pkgs;
     # cloud utils
     # awscli2 # (broken)
     kubectl
+    kubectx
     kubeswitch
     k9s
     kubernetes-helm
