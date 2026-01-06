@@ -2,7 +2,7 @@
   description = "Cassandra's everything flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/113f85d1706e161c41c77572d38b04ba6459a07b";
 
     flake-utils.url = "github:numtide/flake-utils";
