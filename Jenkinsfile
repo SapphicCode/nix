@@ -37,7 +37,7 @@ pipeline {
                   sh """#!/usr/bin/env bash
                   set -euxo pipefail
 
-                  ssh -i \$SSH_ID -o StrictHostKeyChecking=no -o User=\$USER ${address} -- sudo nixos-rebuild switch --flake "\${FLAKE_REF}"
+                  ssh -i \$SSH_ID -o StrictHostKeyChecking=no -o User=\$USER ${address} -- sudo nixos-rebuild boot --flake "\${FLAKE_REF}"
                   """
                 }
               }
