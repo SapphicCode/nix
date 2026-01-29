@@ -32,8 +32,8 @@
         }
         chain POSTROUTING {
           type nat hook postrouting priority srcnat; policy accept;
+          ip saddr { 10.75.0.0/16 } ip daddr { 10.75.0.0/16 } masquerade
           oifname "en*" masquerade
-          oifname "incusbr*" ct status dnat masquerade
         }
         chain output {
           type nat hook output priority -100; policy accept;
@@ -58,6 +58,17 @@
       }
     '';
   };
+
+  services.udev.extraRules = ''
+    # Enable hairpin mode when a new tap interface is added to any incusbr* bridge
+    SUBSYSTEM=="net", ACTION=="add", KERNEL=="tap*", RUN+="${pkgs.writeShellScript "enable-hairpin" ''
+      sleep 0.5
+      bridge=$(basename $(readlink /sys/class/net/$1/brport/bridge 2>/dev/null) 2>/dev/null)
+      if [[ $bridge == incusbr* ]]; then
+        echo 1 > /sys/class/net/$1/brport/hairpin_mode
+      fi
+    ''} %k"
+  '';
 
   # block incus until ZFS is unlocked
   boot.zfs.requestEncryptionCredentials = false;
