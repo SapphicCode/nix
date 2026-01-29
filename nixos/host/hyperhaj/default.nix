@@ -60,11 +60,12 @@
   };
 
   # block incus until ZFS is unlocked
+  boot.zfs.requestEncryptionCredentials = false;
   systemd = {
     services.zfs-key-hyperhaj-incus = {
       unitConfig = {
         Description = "Wait for ZFS dataset hyperhaj/incus to be unlocked";
-        After = ["zfs-import.target"];
+        After = ["zfs-import.target" "sshd.service"];
         Before = ["zfs-key-hyperhaj-incus.target"];
       };
       serviceConfig = {
