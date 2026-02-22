@@ -43,6 +43,7 @@ with pkgs;
     stylua
     pre-commit
     earthly
+    opencode
   ]
   ++ (
     if pkgs.stdenv.isLinux
