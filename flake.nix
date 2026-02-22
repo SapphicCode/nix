@@ -186,11 +186,6 @@
           specialArgs = {inherit unstable;};
           modules = [./nixos/host/ara-hv];
         };
-        "eule" = nixpkgs.lib.nixosSystem {
-          inherit system pkgs;
-          specialArgs = {inherit unstable;};
-          modules = [./nixos/host/eule.nix];
-        };
       };
 
       legacyPackages.darwinConfigurations = {
