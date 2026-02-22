@@ -8,8 +8,6 @@ with pkgs;
     xonsh
 
     # all remaining (occasional use) tools
-    mods
-    ollama
     gh
     nb
     yt-dlp
@@ -30,6 +28,7 @@ with pkgs;
 
     # cloud utils
     # awscli2 # (broken)
+    openbao
     kubectl
     kubectx
     kubeswitch
