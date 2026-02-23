@@ -23,6 +23,7 @@ with pkgs; [
   podman
   docker-client
   docker-compose
+  dive
 
   # tools
   hyfetch

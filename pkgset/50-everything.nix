@@ -31,10 +31,11 @@ with pkgs;
     openbao
     kubectl
     kubectx
-    kubeswitch
     k9s
     kubernetes-helm
     kubeseal
+    cilium-cli
+    talosctl
 
     # programming languages in global context
     go

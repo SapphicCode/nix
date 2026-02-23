@@ -4,6 +4,7 @@ with pkgs; [
   git-lfs
   delta # pager for git
   chezmoi
+  less
 
   # shell
   fish
