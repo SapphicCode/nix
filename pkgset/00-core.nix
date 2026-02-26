@@ -20,6 +20,7 @@ with pkgs;
     zstd
 
     # editing
+    less
     micro
     helix
   ]
