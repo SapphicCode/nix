@@ -13,6 +13,9 @@
         ping_interval = 0.5;
         count = 10;
       };
+      kernel = {
+        collect = ["ksm" "psi"];
+      };
     };
     outputs = {
       influxdb = {
