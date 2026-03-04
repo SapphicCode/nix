@@ -3,6 +3,7 @@ with pkgs;
   [
     # utility
     zsh
+    nushell
     curl
     pv
     gptfdisk

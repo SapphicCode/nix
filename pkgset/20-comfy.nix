@@ -1,7 +1,5 @@
 {pkgs}:
 with pkgs; [
-  nushell # crazy powerful shell
-
   # git
   mergiraf
 
