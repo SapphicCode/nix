@@ -149,6 +149,11 @@
             ./home-manager/profile/everything.nix
           ];
         };
+
+        # orbstack containers
+        "clementine" = self.legacyPackages.${system}.homeConfigurations."generic_everything";
+        "maeve" = self.legacyPackages.${system}.homeConfigurations."generic_everything";
+        "simone" = self.legacyPackages.${system}.homeConfigurations."generic_everything";
       };
 
       legacyPackages.nixosConfigurations = {

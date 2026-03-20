@@ -2,6 +2,7 @@
 with pkgs; [
   # git
   mergiraf
+  difftastic
 
   # shell plugins
   zoxide
@@ -10,6 +11,9 @@ with pkgs; [
   # fancier TUIs
   btop
   zellij
+
+  # bigger editors
+  neovim
 
   # neovim soft dependencies
   efm-langserver
