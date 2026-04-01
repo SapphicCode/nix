@@ -12,7 +12,7 @@ pre-commit: fmt
 fmt:
     nix run nixpkgs#alejandra -- .
 
-_nixpkgs_hash OFFSET='1wk':
+_nixpkgs_hash OFFSET='3day':
     #!/usr/bin/env nu
 
     # bump nixpkgs-unstable
