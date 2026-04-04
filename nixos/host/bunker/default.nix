@@ -10,16 +10,22 @@
   networking.hostName = "bunker";
   virtualisation.incus.agent.enable = true;
 
+  networking.firewall.allowedTCPPorts = [5432];
   services.postgresql = {
     enable = true;
     package = pkgs.postgresql_17;
+
+    enableTCPIP = true;
+
     ensureDatabases = ["sapphiccode"];
-    ensureUsers = [{
-      name = "sapphiccode";
-      ensureClauses = {
-        login = true;
-        superuser = true;
-      };
-    }];
+    ensureUsers = [
+      {
+        name = "sapphiccode";
+        ensureClauses = {
+          login = true;
+          superuser = true;
+        };
+      }
+    ];
   };
 }
