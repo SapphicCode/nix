@@ -10,7 +10,8 @@
   networking.hostName = "bunker";
   virtualisation.incus.agent.enable = true;
 
-  networking.firewall.allowedTCPPorts = [5432];
+  networking.firewall.allowedTCPPorts = [5432 8428 9428];
+
   services.postgresql = {
     enable = true;
     package = pkgs.postgresql_17;
@@ -32,4 +33,7 @@
       }
     ];
   };
+
+  services.victorialogs.enable = true;
+  services.victoriametrics.enable = true;
 }
