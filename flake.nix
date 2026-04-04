@@ -104,16 +104,6 @@
         };
 
         # linux
-        "pandora" = home-manager.lib.homeManagerConfiguration {
-          pkgs = unstable;
-          extraSpecialArgs = {stable = pkgs;};
-          modules = [./home-manager/host/pandora.nix];
-        };
-        "Pandora" = home-manager.lib.homeManagerConfiguration {
-          pkgs = unstable;
-          extraSpecialArgs = {stable = pkgs;};
-          modules = [./home-manager/host/pandora_wsl.nix];
-        };
         "hollydeck" = home-manager.lib.homeManagerConfiguration {
           pkgs = unstable;
           extraSpecialArgs = {stable = pkgs;};
@@ -157,25 +147,6 @@
       };
 
       legacyPackages.nixosConfigurations = {
-        "pandora" = nixpkgs.lib.nixosSystem {
-          inherit system pkgs;
-          specialArgs = {inherit unstable;};
-          modules = [
-            ./nixos/host/pandora/hardware-configuration.nix
-            ./nixos/profile/desktop_${system}.nix
-            ./nixos/module/systemd-boot.nix
-            ./nixos/module/gnome.nix
-            ./nixos/module/niri.nix
-            ./nixos/module/framework-13.nix
-            ({config, ...}: {
-              networking.hostName = "pandora";
-              networking.hostId = "94ad2a33";
-
-              boot.kernelPackages = pkgs.linuxPackages_6_12;
-              boot.zfs.package = pkgs.zfs_2_3;
-            })
-          ];
-        };
         "blahaj" = nixpkgs.lib.nixosSystem {
           inherit system pkgs;
           specialArgs = {inherit unstable;};
@@ -185,11 +156,6 @@
           inherit system pkgs;
           specialArgs = {inherit unstable;};
           modules = [./nixos/host/hyperhaj];
-        };
-        "ara-hv" = nixpkgs.lib.nixosSystem {
-          inherit system pkgs;
-          specialArgs = {inherit unstable;};
-          modules = [./nixos/host/ara-hv];
         };
       };
 
