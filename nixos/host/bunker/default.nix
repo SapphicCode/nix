@@ -36,11 +36,11 @@
 
   services.victorialogs = {
     enable = true;
-    extraOptions = ["-retentionPeriod=100y"];
+    extraOptions = ["-retentionPeriod=100y" "-memory.allowedPercent=25"];
   };
 
   services.victoriametrics = {
     enable = true;
-    extraOptions = ["-retentionPeriod=100y"];
+    extraOptions = ["-retentionPeriod=100y" "-memory.allowedPercent=25"];
   };
 }
