@@ -33,9 +33,9 @@
   security.sudo.wheelNeedsPassword = false;
 
   # Software > Maintenance
-  services.zfs.trim.enable = lib.mkIf config.boot.zfs.enable true;
+  services.zfs.trim.enable = lib.mkIf config.boot.zfs.enabled true;
   services.zfs.autoScrub = {
-    enable = lib.mkIf config.boot.zfs.enable true;
+    enable = lib.mkIf config.boot.zfs.enabled true;
     interval = "monthly";
   };
 
