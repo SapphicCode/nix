@@ -16,6 +16,10 @@
     package = pkgs.postgresql_17;
 
     enableTCPIP = true;
+    authentication = ''
+      host  all  all  0.0.0.0/0  scram-sha-256
+      host  all  all  ::/0       scram-sha-256
+    '';
 
     ensureDatabases = ["sapphiccode"];
     ensureUsers = [
