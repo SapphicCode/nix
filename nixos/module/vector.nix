@@ -11,7 +11,7 @@
       sinks = {
         victorialogs_journal = {
           type = "http";
-          inputs = ["journal_std"];
+          inputs = ["journal"];
           encoding = {
             codec = "json";
           };
