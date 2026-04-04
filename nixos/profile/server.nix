@@ -1,7 +1,7 @@
 {
   lib,
-  pkgs,
   unstable,
+  config,
   ...
 }: {
   imports = [
@@ -33,16 +33,15 @@
   security.sudo.wheelNeedsPassword = false;
 
   # Software > Maintenance
-  services.zfs.trim.enable = true;
+  services.zfs.trim.enable = lib.mkIf config.boot.zfs.enable true;
   services.zfs.autoScrub = {
-    enable = true;
+    enable = lib.mkIf config.boot.zfs.enable true;
     interval = "monthly";
   };
 
   # Software > Everyday
   nix.package = unstable.lixPackageSets.latest.lix;
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  environment.systemPackages = with pkgs; [];
   programs.gnupg.agent.enable = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
