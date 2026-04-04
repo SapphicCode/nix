@@ -13,5 +13,13 @@
   services.postgresql = {
     enable = true;
     package = pkgs.postgresql_17;
+    ensureDatabases = ["sapphiccode"];
+    ensureUsers = [{
+      name = "sapphiccode";
+      ensureClauses = {
+        login = true;
+        superuser = true;
+      };
+    }];
   };
 }
