@@ -7,12 +7,6 @@
       disk = {ignore_fs = ["tmpfs" "devtmpfs" "devfs" "iso9660" "overlay" "aufs" "squashfs" "efivarfs"];};
       net = {interfaces = ["en*"];};
       system = {};
-      ping = {
-        urls = ["89.1.7.228"];
-        method = "native";
-        ping_interval = 0.5;
-        count = 10;
-      };
       kernel = {
         collect = ["ksm" "psi"];
       };

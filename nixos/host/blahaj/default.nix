@@ -39,4 +39,11 @@
   };
 
   networking.firewall.enable = false;
+
+  services.telegraf.extraConfig.inputs.ping = {
+    urls = ["89.1.7.228"];
+    method = "native";
+    ping_interval = 0.5;
+    count = 10;
+  };
 }
