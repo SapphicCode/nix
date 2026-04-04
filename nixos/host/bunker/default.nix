@@ -34,6 +34,13 @@
     ];
   };
 
-  services.victorialogs.enable = true;
-  services.victoriametrics.enable = true;
+  services.victorialogs = {
+    enable = true;
+    extraOptions = ["-retentionPeriod=100y"];
+  };
+
+  services.victoriametrics = {
+    enable = true;
+    extraOptions = ["-retentionPeriod=100y"];
+  };
 }
