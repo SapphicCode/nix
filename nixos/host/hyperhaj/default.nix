@@ -9,7 +9,6 @@
     ../../profile/server_x86_64-linux.nix
     ../../module/systemd-networkd-en_dhcp.nix
     ../../module/incus.nix
-    ../../module/telegraf.nix
   ];
 
   networking.hostName = "hyperhaj";

@@ -7,6 +7,8 @@
   imports = [
     ../module/openssh.nix
     ../module/tailscale.nix
+    ../module/vector.nix
+    ../module/telegraf.nix
     ../module/user/sapphiccode.nix
     ../module/user/aurelia.nix
     ../module/user/automata.nix

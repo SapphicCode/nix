@@ -12,8 +12,6 @@
     ../../module/podman.nix
     ../../module/podman-user-quadlet.nix
     ../../module/kopia.nix
-    ../../module/telegraf.nix
-    ../../module/vector.nix
     ../../module/user/hex.nix
     ../../module/user/chaos.nix
   ];
