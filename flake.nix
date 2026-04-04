@@ -157,6 +157,11 @@
           specialArgs = {inherit unstable;};
           modules = [./nixos/host/hyperhaj];
         };
+        "bunker" = nixpkgs.lib.nixosSystem {
+          inherit system pkgs;
+          specialArgs = {inherit unstable;};
+          modules = [./nixos/host/bunker];
+        };
       };
 
       legacyPackages.darwinConfigurations = {
