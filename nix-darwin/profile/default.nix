@@ -4,6 +4,7 @@ in {
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   nix = {
+    enable = true;
     package = lix;
     settings = {
       experimental-features = ["nix-command" "flakes"];
@@ -14,8 +15,6 @@ in {
   environment.systemPackages = [
     lix
   ];
-
-  services.nix-daemon.enable = true;
 
   system.stateVersion = 6;
 }
