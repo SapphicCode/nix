@@ -10,7 +10,18 @@
   networking.hostName = "bunker";
   virtualisation.incus.agent.enable = true;
 
-  networking.firewall.allowedTCPPorts = [5432 8428 9428];
+  networking.firewall.allowedTCPPorts = [
+    5432
+
+    8428
+    2003
+    4242
+
+    9428
+  ];
+  networking.firewall.allowedUDPPorts = [
+    8089
+  ];
 
   services.postgresql = {
     enable = true;
@@ -41,6 +52,14 @@
 
   services.victoriametrics = {
     enable = true;
-    extraOptions = ["-retentionPeriod=100y" "-memory.allowedPercent=25"];
+    extraOptions = [
+      "-retentionPeriod=100y"
+      "-memory.allowedPercent=25"
+      "-influxListenAddr=:8089"
+      "-graphiteListenAddr=:2003"
+      "-opentsdbListenAddr=:4242"
+      "-opentsdbHTTPListenAddr=:4242"
+      "-promscape.config=/etc/victoriametrics/promscrape.yaml"
+    ];
   };
 }
