@@ -59,7 +59,7 @@
       "-graphiteListenAddr=:2003"
       "-opentsdbListenAddr=:4242"
       "-opentsdbHTTPListenAddr=:4242"
-      "-promscape.config=/etc/victoriametrics/promscrape.yaml"
+      "-promscrape.config=/etc/victoriametrics/promscrape.yaml"
     ];
   };
 }
