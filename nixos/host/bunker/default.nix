@@ -58,7 +58,6 @@
       "-influxListenAddr=:8089"
       "-graphiteListenAddr=:2003"
       "-opentsdbListenAddr=:4242"
-      "-opentsdbHTTPListenAddr=:4242"
       "-promscrape.config=/etc/victoriametrics/promscrape.yaml"
     ];
   };
