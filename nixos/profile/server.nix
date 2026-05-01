@@ -19,7 +19,7 @@
   boot.initrd.systemd.enable = true;
 
   # Hardware > Memory
-  zramSwap.enable = true;
+  zramSwap.enable = lib.mkDefault true;
   systemd.oomd = {
     enable = true;
     enableRootSlice = true;

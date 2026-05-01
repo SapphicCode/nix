@@ -15,6 +15,7 @@
   networking.hostId = "ef6c5017";
   networking.firewall.enable = false;
   boot.kernelPackages = pkgs.linuxPackages_6_12;
+  zramSwap.enable = false;
 
   # unblock port 22
   services.openssh.ports = [2222];
