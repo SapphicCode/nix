@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   unstable,
   config,
   ...
@@ -30,6 +31,10 @@
 
   # Hardware > Firmware
   services.fwupd.enable = true;
+
+  # Software > Kernel
+  # Latest LTS
+  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_6_18;
 
   # Security
   security.sudo.wheelNeedsPassword = false;
