@@ -16,6 +16,7 @@
   networking.firewall.enable = false;
   boot.kernelPackages = pkgs.linuxPackages_6_12;
   zramSwap.enable = false;
+  hardware.ksm.enable = true;
 
   # unblock port 22
   services.openssh.ports = [2222];
