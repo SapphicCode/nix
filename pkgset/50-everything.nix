@@ -39,6 +39,7 @@ with pkgs;
 
     # programming languages in global context
     go
+    nodejs
 
     # other programming language tooling
     stylua
