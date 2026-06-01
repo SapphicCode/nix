@@ -13,7 +13,6 @@ with pkgs;
     yt-dlp
     jwt-cli
     fossil
-    pipx # in case of fire break glass
     jujutsu
     taskwarrior3
     taskwarrior-tui
