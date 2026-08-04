@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/f84bd7d230cbee3e31aada4da3f91f2e60e1383a";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/97913488884f76f2c1925f79378e190957a9200a";
 
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -12,7 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/nix-darwin-25.11";
+      url = "github:LnL7/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
