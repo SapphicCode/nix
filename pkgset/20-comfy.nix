@@ -1,6 +1,7 @@
 {pkgs}:
 with pkgs; [
   # git
+  git-backdate
   mergiraf
   difftastic
 
