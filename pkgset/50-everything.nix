@@ -43,7 +43,7 @@ with pkgs;
     # other programming language tooling
     stylua
     pre-commit
-    earthly
+    earthbuild
     opencode
   ]
   ++ (
