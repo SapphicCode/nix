@@ -31,6 +31,8 @@
 
   # Hardware > Firmware
   services.fwupd.enable = true;
+  systemd.services.fwupd-refresh.unitConfig.ConditionVirtualization = false; # incus bug?
+  systemd.services.fwupd.unitConfig.ConditionVirtualization = false;
 
   # Software > Kernel
   # Latest LTS
