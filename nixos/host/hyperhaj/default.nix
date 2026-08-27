@@ -48,6 +48,9 @@
         chain forward {
           type filter hook forward priority filter; policy accept;
 
+          # allow return traffic
+          ct state established,related counter accept
+
           # filter private ranges so Hetzner's security team doesn't go nuclear on us
           oifname "en*" ip daddr {
             10.0.0.0/8,
@@ -55,6 +58,13 @@
             192.168.0.0/16,
             100.64.0.0/10
           } counter drop
+
+          # allow DNAT
+          iifname "en*" ip daddr 10.75.0.115 tcp dport 22 counter accept
+          iifname "en*" ip daddr 10.75.1.60 tcp dport { 80, 443 } counter accept
+
+          # block all other forwarding
+          iifname "en*" counter drop
         }
       }
     '';
