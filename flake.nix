@@ -162,6 +162,11 @@
           specialArgs = {inherit unstable;};
           modules = [./nixos/host/bunker];
         };
+        "nostromo" = nixpkgs.lib.nixosSystem {
+          inherit system pkgs;
+          specialArgs = {inherit unstable;};
+          modules = [./nixos/host/nostromo];
+        };
       };
 
       legacyPackages.darwinConfigurations = {
