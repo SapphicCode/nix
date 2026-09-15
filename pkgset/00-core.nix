@@ -26,7 +26,7 @@ with pkgs;
     helix
   ]
   ++ (
-    if pkgs.stdenv.isLinux
+    if pkgs.stdenv.hostPlatform.isLinux
     then
       with pkgs; [
         cryptsetup
