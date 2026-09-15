@@ -16,6 +16,7 @@
   home.activation.chezmoi = lib.hm.dag.entryAfter ["installPackages"] ''
     PATH="${pkgs.coreutils}/bin:$HOME/.nix-profile/bin:$PATH"
     run chezmoi init git.sapphiccode.net/SapphicCode/dotfiles
+    run chezmoi git checkout v2
     run chezmoi update -a
     run chezmoi git status
   '';
