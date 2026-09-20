@@ -20,6 +20,10 @@
   # unblock port 22
   services.openssh.ports = [2222];
 
+  environment.systemPackages = with pkgs; [
+    wireguard-tools
+  ];
+
   # do NAT & firewalling
   networking.nftables = {
     enable = true;
@@ -34,6 +38,7 @@
         chain POSTROUTING {
           type nat hook postrouting priority srcnat; policy accept;
           ip saddr { 10.75.0.0/16 } ip daddr { 10.75.0.0/16 } masquerade
+          oifname "wg*" masquerade
           oifname "en*" masquerade
         }
         chain output {
@@ -80,6 +85,28 @@
       fi
     ''} %k"
   '';
+
+  # set routes for incusbr2
+  networking.iproute2 = {
+    enable = true;
+    rttablesExtraConfig = ''
+      200 wgtun
+    '';
+  };
+  networking.wg-quick.interfaces.wg0 = {
+    configFile = "/etc/secrets/vpn/fi-hel-fi1.conf";
+    # remember to do Table = "off" in the Interface section!
+  };
+  systemd.services.network-set-up-wgtun = {
+    wants = ["wg-quick-wg0.service"];
+    after = ["wg-quick-wg0.service"];
+    wantedBy = ["multi-user.target"];
+    unitConfig.Type = "oneshot";
+    script = ''
+      ${pkgs.iproute2}/bin/ip rule add iif incusbr2 table wgtun priority 100 || true
+      ${pkgs.iproute2}/bin/ip route add default dev wg0 table wgtun || true
+    '';
+  };
 
   # block incus until ZFS is unlocked
   boot.zfs.requestEncryptionCredentials = false;
