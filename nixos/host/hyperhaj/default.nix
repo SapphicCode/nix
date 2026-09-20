@@ -32,8 +32,8 @@
         chain PREROUTING {
           type nat hook prerouting priority dstnat; policy accept;
           ip daddr 37.27.111.226 tcp dport 22 dnat ip to 10.75.0.115:22
-          ip daddr 37.27.111.226 tcp dport 80 dnat ip to 10.75.1.60:80
-          ip daddr 37.27.111.226 tcp dport 443 dnat ip to 10.75.1.60:443
+          ip daddr 37.27.111.226 tcp dport 80 dnat ip to 10.75.1.170:80
+          ip daddr 37.27.111.226 tcp dport 443 dnat ip to 10.75.1.170:443
         }
         chain POSTROUTING {
           type nat hook postrouting priority srcnat; policy accept;
@@ -45,7 +45,7 @@
           type nat hook output priority -100; policy accept;
 
           # enable host to access services in k8s via public IP
-          ip daddr 37.27.111.226 tcp dport { 80, 443 } dnat to 10.75.1.60
+          ip daddr 37.27.111.226 tcp dport { 80, 443 } dnat to 10.75.1.170
         }
       }
 
@@ -66,7 +66,7 @@
 
           # allow DNAT
           iifname "en*" ip daddr 10.75.0.115 tcp dport 22 counter accept
-          iifname "en*" ip daddr 10.75.1.60 tcp dport { 80, 443 } counter accept
+          iifname "en*" ip daddr 10.75.1.170 tcp dport { 80, 443 } counter accept
 
           # block all other forwarding
           iifname "en*" counter drop
