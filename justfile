@@ -17,10 +17,10 @@ _nixpkgs_hash OFFSET='3day':
     let hash = http get $"https://api.github.com/repos/nixos/nixpkgs/commits?($query | url build-query)" | first | get sha
     print $hash
 
-_update:
+_update OFFSET="":
     #!/usr/bin/env bash
     set -euxo pipefail
-    hash=$(just _nixpkgs_hash)
+    hash=$(just _nixpkgs_hash "{{OFFSET}}")
     sed -i "s!nixpkgs-unstable.url =.*!nixpkgs-unstable.url = \"github:nixos/nixpkgs/${hash}\";!" flake.nix
 
 update: _update
