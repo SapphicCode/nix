@@ -20,7 +20,7 @@ with pkgs;
     yubikey-manager
 
     # transcoding / image manipulation
-    imagemagickBig
+    ab-av1
     exiftool
     libjxl
     imagemagickBig
