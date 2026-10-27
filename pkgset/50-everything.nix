@@ -48,6 +48,6 @@ with pkgs;
   ]
   ++ (
     if pkgs.stdenv.hostPlatform.isLinux
-    then with pkgs; [ffmpeg]
+    then with pkgs; [ffmpeg-full]
     else []
   )
