@@ -12,15 +12,15 @@ _nixpkgs_hash OFFSET='3day':
     #!/usr/bin/env nu
 
     # bump nixpkgs-unstable
-    let offset = (date now) - {{OFFSET}}
+    let offset = (date now) - {{ OFFSET }}
     let query = {until: $offset, sha: "nixos-unstable", per_page: 1, page: 1}
     let hash = http get $"https://api.github.com/repos/nixos/nixpkgs/commits?($query | url build-query)" | first | get sha
     print $hash
 
-_update OFFSET="":
+_update OFFSET="3day":
     #!/usr/bin/env bash
     set -euxo pipefail
-    hash=$(just _nixpkgs_hash "{{OFFSET}}")
+    hash=$(just _nixpkgs_hash "{{ OFFSET }}")
     sed -i "s!nixpkgs-unstable.url =.*!nixpkgs-unstable.url = \"github:nixos/nixpkgs/${hash}\";!" flake.nix
 
 update: _update
@@ -29,13 +29,13 @@ update: _update
     jj commit -m 'flake: update inputs' -- flake.nix flake.lock
 
 switch-hm:
-    home-manager switch --flake '.#{{hostname}}'
+    home-manager switch --flake '.#{{ hostname }}'
 
 switch-nixos:
-    sudo nixos-rebuild switch --flake '.#{{hostname}}'
+    sudo nixos-rebuild switch --flake '.#{{ hostname }}'
 
 switch-darwin:
-    nix run nix-darwin -- build --flake '.#{{hostname}}'
+    nix run nix-darwin -- build --flake '.#{{ hostname }}'
     ls -l result/sw/bin/nix
     echo 'Waiting for Full Disk Access...' && read
     sudo result/activate
@@ -49,7 +49,7 @@ switch:
         just switch-hm
     fi
 
-    if [ "$(uname)" = "Darwin" ] && grep "darwinSystem" flake.nix | grep -q "{{hostname}}" flake.nix; then
+    if [ "$(uname)" = "Darwin" ] && grep "darwinSystem" flake.nix | grep -q "{{ hostname }}" flake.nix; then
         just switch-darwin
     fi
 
